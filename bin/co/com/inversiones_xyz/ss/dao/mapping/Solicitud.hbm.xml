@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/05/2016 11:11:39 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.inversionesxyz.sistemasolicitudes.dto.Solicitud" table="SOLICITUD">
+        <id name="radicado" type="java.lang.Integer">
+            <column name="RADICADO" precision="11"/>
+            <generator class="assigned" />
+        </id>
+        <property name="apellidos" type="java.lang.String">
+            <column name="APELLIDOS" length="40" not-null="true"/>
+        </property>
+        <property name="nombres" type="java.lang.String">
+            <column name="NOMBRES" length="40" not-null="true"/>
+        </property>
+        <property name="correo" type="java.lang.String">
+            <column name="CORREO" length="100" not-null="true"/>
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="TELEFONO" length="10" not-null="true"/>
+        </property>
+        <property name="celular" type="java.lang.String">
+            <column name="CELULAR" length="10"/>
+        </property>
+        <property name="descripcion" type="java.lang.String">
+            <column name="DESCRIPCION" not-null="true"/>
+        </property>
+        <many-to-one name="sucursal" class="com.inversionesxyz.sistemasolicitudes.dto.Sucursal">
+            <column name="SUCURSAL" length="10" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="tipoSolicitud" class="com.inversionesxyz.sistemasolicitudes.dto.TipoSolicitud">
+            <column name="TIPOSOLICITUD" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="producto" class="com.inversionesxyz.sistemasolicitudes.dto.Producto">
+            <column name="PRODUCTO" not-null="true"/>
+        </many-to-one>
+        <many-to-one name="seguimiento" class="com.inversionesxyz.sistemasolicitudes.dto.Seguimiento" fetch="join">
+            <column name="SEGUIMIENTO" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
