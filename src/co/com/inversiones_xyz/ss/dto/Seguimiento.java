@@ -34,6 +34,10 @@ public class Seguimiento {
 	private String satisfaccion;
 	private Usuario responsable;
 	
+	public Seguimiento(int id){
+		this.id = id;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

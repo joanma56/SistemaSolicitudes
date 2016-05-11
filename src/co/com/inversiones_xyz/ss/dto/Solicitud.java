@@ -21,6 +21,8 @@ package co.com.inversiones_xyz.ss.dto;
  * @param tipoSolicitud: Clave foranea a tipo de solicitud
  * @param producto: Producto asociado a una solicitud bien sea porque fue adquirido en la empresa
  * 					o del que se desea pedir información, dar una queja, etc.
+ * @param seguimiento: clave foranea a la tabla seguimiento
+ * 					   Seguimiento acerca del estado y respuesta a una solicitud
  */
 
 public class Solicitud {
@@ -35,9 +37,8 @@ public class Solicitud {
 	private Sucursal sucursal;				
 	private TipoSolicitud tipoSolicitud;
 	private Producto producto;				
-							
-	
-	private Seguimiento seguimiento;		//Seguimiento acerca del estado y respuesta a una solicitud
+	private Seguimiento seguimiento;
+
 	public Integer getRadicado() {
 		return radicado;
 	}
