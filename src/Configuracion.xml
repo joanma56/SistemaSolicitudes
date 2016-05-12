@@ -63,6 +63,18 @@
 	    <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
+	<bean id="usuarioDao" class="co.com.inversiones_xyz.ss.dao.hibernate.UsuarioDAOHibernate">
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="solicitudService" class="co.com.inversiones_xyz.ss.service.SolicitudService">
+	    <property name="solicitudDAO" ref="solicitudDao"></property>
+	    <property name="seguimientoDAO" ref="seguimientoDao"></property>
+	    <property name="sucursalDAO" ref="sucursalDao"></property>
+	    <property name="productoDAO" ref="productoDao"></property>
+	    <property name="tipoSolicitudDAO" ref="tipoSolicitudDao"></property>
+	    <property name="usuarioDAO" ref="usuarioDao"></property>
+	</bean>
 	
 	<context:component-scan base-package="co.com.inversiones_xyz.ss"/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>

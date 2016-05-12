@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 9/05/2016 11:11:39 AM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.inversionesxyz.sistemasolicitudes.dto.Solicitud" table="SOLICITUD">
+    <class name="co.com.inversiones_xyz.ss.dto.Solicitud" table="SOLICITUD">
         <id name="radicado" type="java.lang.Integer">
             <column name="RADICADO" precision="11"/>
             <generator class="assigned" />
@@ -26,17 +26,17 @@
         <property name="descripcion" type="java.lang.String">
             <column name="DESCRIPCION" not-null="true"/>
         </property>
-        <many-to-one name="sucursal" class="com.inversionesxyz.sistemasolicitudes.dto.Sucursal">
+        <many-to-one name="sucursal" class="co.com.inversiones_xyz.ss.dto.Sucursal">
             <column name="SUCURSAL" length="10" not-null="true"/>
         </many-to-one>
-        <many-to-one name="tipoSolicitud" class="com.inversionesxyz.sistemasolicitudes.dto.TipoSolicitud">
+        <many-to-one name="tipoSolicitud" class="co.com.inversiones_xyz.ss.dto.TipoSolicitud">
             <column name="TIPOSOLICITUD" not-null="true"/>
         </many-to-one>
-        <many-to-one name="producto" class="com.inversionesxyz.sistemasolicitudes.dto.Producto">
+        <many-to-one name="producto" class="co.com.inversiones_xyz.ss.dto.Producto">
             <column name="PRODUCTO" not-null="true"/>
         </many-to-one>
-        <many-to-one name="seguimiento" class="com.inversionesxyz.sistemasolicitudes.dto.Seguimiento" fetch="join">
-            <column name="SEGUIMIENTO" not-null="true" />
+        <many-to-one name="seguimiento" class="co.com.inversiones_xyz.ss.dto.Seguimiento" fetch="join">
+            <column name="SEGUIMIENTO_ID" not-null="true" />
         </many-to-one>
     </class>
 </hibernate-mapping>

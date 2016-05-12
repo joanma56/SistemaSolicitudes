@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 9/05/2016 11:11:39 AM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="com.inversionesxyz.sistemasolicitudes.dto.Rol" table="ROL">
+    <class name="co.com.inversiones_xyz.ss.dto.Rol" table="ROL">
         <id name="codigo" type="java.lang.String">
             <column name="CODIGO" />
         </id>
