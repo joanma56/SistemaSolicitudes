@@ -5,11 +5,11 @@
 <hibernate-mapping>
     <class name="co.com.inversiones_xyz.ss.dto.TipoSolicitud" table="TIPOSOLICITUD">
         <id name="codigo" type="java.lang.Integer">
-            <column name="CODIGO" precision="11" />
+            <column name="Codigo" precision="11" />
             <generator class="assigned" />
         </id>
         <property name="nombre" type="java.lang.String">
-            <column name="NOMBRE" length="20" not-null="true"/>
+            <column name="Nombre" length="20" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

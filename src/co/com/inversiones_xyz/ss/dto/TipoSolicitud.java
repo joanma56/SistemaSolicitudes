@@ -14,14 +14,12 @@ package co.com.inversiones_xyz.ss.dto;
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
  * 			08/05/2016
- * @param codigo: Identificador univoco de un tipo de solicitud
- * @param nombre: Nombre del tipo de solicitud (petición, queja, reclamo, etc.)
  * 
  */
 public class TipoSolicitud {
 	
-	private Integer codigo;
-	private String nombre;
+	private Integer codigo; //Identificador univoco de un tipo de solicitud
+	private String nombre; //Nombre del tipo de solicitud (petición, queja, reclamo, etc.)
 	
 	public Integer getCodigo() {
 		return codigo;

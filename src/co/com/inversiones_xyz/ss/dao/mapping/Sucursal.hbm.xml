@@ -5,16 +5,16 @@
 <hibernate-mapping>
     <class name="co.com.inversiones_xyz.ss.dto.Sucursal" table="SUCURSAL">
         <id name="codigo" type="java.lang.String">
-            <column name="CODIGO" length="10" not-null="true" />
+            <column name="Codigo" length="10" not-null="true" />
         </id>
         <property name="nombre" type="java.lang.String">
-            <column name="NOMBRE" length="30" not-null="true"/>
+            <column name="Nombre" length="30" not-null="true"/>
         </property>
         <property name="direccion" type="java.lang.String">
-            <column name="DIRECCION" length="100"/>
+            <column name="Direccion" length="100"/>
         </property>
         <property name="ciudad" type="java.lang.String">
-            <column name="CIUDAD" length="45"/>
+            <column name="Ciudad" length="45"/>
         </property>
     </class>
 </hibernate-mapping>

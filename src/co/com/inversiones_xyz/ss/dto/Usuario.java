@@ -11,22 +11,16 @@ package co.com.inversiones_xyz.ss.dto;
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
  * 			08/05/2016
- * @param nombres: Nombres del usuario
- * @param apellidos: Apellidos del usuario
- * @param nombreUsuario: Nombre de usuario o login para iniciar sesión en el sistema
- * @param password: Contraseña para iniciar sesión en el sistema
- * @param correo: Correo electrónico del usuario
- * @param rol: Rol que desempeña el usuario en el sistema
  */
 
 public class Usuario {
 	
-	private String nombres;			
-	private String apellidos;		
-	private String nombreUsuario;	
-	private String password;		
-	private String correo;			
-	private Rol rol;				
+	private String nombres;	//Nombres del usuario	
+	private String apellidos; //Apellidos del usuario	
+	private String nombreUsuario; //Nombre de usuario o login para iniciar sesión en el sistema
+	private String password;  //Contraseña para iniciar sesión en el sistema	
+	private String correo;	//Correo electrónico del usuario		
+	private Rol rol; //Rol que desempeña el usuario en el sistema	
 	
 	public String getNombreUsuario() {
 		return nombreUsuario;

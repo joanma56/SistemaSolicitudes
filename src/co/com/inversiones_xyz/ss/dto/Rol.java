@@ -12,15 +12,13 @@ package co.com.inversiones_xyz.ss.dto;
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
  * 			08/05/2016
- * @param codigo: Identificador del rol
- * @param nombre: Nombre del rol en el sistema
  *
  */
 
 public class Rol {
 	
-	private String codigo;
-	private String nombre;
+	private String codigo; //Identificador del rol
+	private String nombre; //Nombre del rol en el sistema
 	
 	public String getCodigo() {
 		return codigo;

@@ -3,27 +3,25 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 9/05/2016 11:11:39 AM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="co.com.inversiones_xyz.ss.dto.Usuario" table="USUARIO">
+    <class name="co.com.inversiones_xyz.ss.dto.Usuario" table="usuario">
     
         <id name="NombreUsuario" type="java.lang.String">
             <column name="NombreUsuario" length="20" />
         </id>
-        
-        <property name="apellidos" type="java.lang.String">
-            <column name="APELLIDOS" length="30" not-null="true"/>
-        </property>
         <property name="nombres" type="java.lang.String">
-            <column name="NOMBRES" length="30" not-null="true"/>
+            <column name="Nombres" length="30" not-null="true"/>
+        </property>
+        <property name="apellidos" type="java.lang.String">
+            <column name="Apellidos" length="30" not-null="true"/>
         </property>
         <property name="password" type="java.lang.String">
-            <column name="PASSWORD" length="30" not-null="true"/>
+            <column name="Password" length="30" not-null="true"/>
         </property>
         <property name="correo" type="java.lang.String">
-            <column name="CORREO" length="100" not-null="true"/>
+            <column name="Correo" length="100" not-null="true"/>
         </property>
-        
         <many-to-one name="rol" class="co.com.inversiones_xyz.ss.dto.Rol">
-            <column name="ROL" length="10" not-null="true" />
+            <column name="Rol" length="10" not-null="true" />
         </many-to-one>
     </class>
 </hibernate-mapping>

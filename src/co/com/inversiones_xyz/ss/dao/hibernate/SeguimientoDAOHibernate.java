@@ -7,9 +7,21 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import co.com.inversiones_xyz.ss.dao.SeguimientoDAO;
 import co.com.inversiones_xyz.ss.dto.Seguimiento;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
-
+/**
+ * 
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			12/05/2016
+ *
+ */
 public class SeguimientoDAOHibernate extends HibernateDaoSupport implements SeguimientoDAO{
 
+	/**
+	 * Permite modificar un seguimiento en el sistema
+	 */
 	@Override
 	public Seguimiento modificarSeguimiento(Seguimiento seguimiento) throws DaoException {
 		Session session = null;
@@ -22,6 +34,9 @@ public class SeguimientoDAOHibernate extends HibernateDaoSupport implements Segu
 		return seguimiento;
 	}
 
+	/**
+	 * Permite insertar un nuevo seguimiento en el sistema
+	 */
 	@Override
 	public Seguimiento insertar(Seguimiento seguimiento) throws DaoException {
 		Session session = null;
@@ -34,6 +49,9 @@ public class SeguimientoDAOHibernate extends HibernateDaoSupport implements Segu
 		return null;
 	}
 
+	/**
+	 * Permite obtener un seguimiento dado el id
+	 */
 	@Override
 	public Seguimiento obtener(int id) throws DaoException {
 		Session session = null;

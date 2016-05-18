@@ -12,27 +12,20 @@ import java.util.Date;
  * 		Rafael Luna Pérez
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
- * 			08/05/2016
- * @param id: Identificación única del seguimiento
- * @param fechaCreacion: Fecha en la que se crea la solicitud 	
- * @param fechaReasignada: Fecha en la que sea reasignada una solicitud 
- * @param fechaRespondida: Fecha en que sea respondida la solicitud
- * @param estado: Condicion de la solicitud, 1 en estado atendida, 0 en estado pendiente
- * @param satisfaccion: Cadena de caracteres que incluye las respuestas de un cliente a la encuesta que 
- * 						se le envió al correo. Las respuestas consisten en una secuencia de Si,No
- * @param responsable: Clave foranea a la tabla usuario
- *					   Usuario del sistema encargado de atender la solicitud
+ * 			08/05/2016				   
  */
 
 public class Seguimiento {
 	
-	private Integer id;
-	private Date fechaCreacion;
-	private Date fechaReasignada;
-	private Date fechaRespondida;
-	private byte estado;
-	private String satisfaccion;
-	private Usuario responsable;
+	private Integer id; //Identificación única del seguimiento
+	private Date fechaCreacion; //Fecha en la que se crea la solicitud 	
+	private Date fechaReasignada; //Fecha en la que sea reasignada una solicitud
+	private Date fechaRespondida; //Fecha en que sea respondida la solicitud
+	private byte estado; //Condicion de la solicitud, 1 en estado atendida, 0 en estado pendiente
+	private String satisfaccion;/* Cadena de caracteres que incluye las respuestas de un cliente a la encuesta que 
+								se le envió al correo. Las respuestas consisten en una secuencia de Si,No*/
+	private Usuario responsable;/*Clave foranea a la tabla usuario
+								Usuario del sistema encargado de atender la solicitud*/
 	
 	public Integer getId() {
 		return id;

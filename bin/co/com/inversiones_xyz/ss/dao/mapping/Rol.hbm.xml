@@ -5,10 +5,10 @@
 <hibernate-mapping>
     <class name="co.com.inversiones_xyz.ss.dto.Rol" table="ROL">
         <id name="codigo" type="java.lang.String">
-            <column name="CODIGO" />
+            <column name="Codigo" />
         </id>
         <property name="nombre" type="java.lang.String">
-            <column name="NOMBRE" length="20" not-null="true" />
+            <column name="Nombre" length="20" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

@@ -1,7 +1,7 @@
 package co.com.inversiones_xyz.ss.excepcion;
 
 /**
- * Clase que nos permite manejar la captura de errores generadas en tiempo 
+ * Clase que nos permite manejar la captura de errores (asociados a la comunicacion con la BD) generadas en tiempo 
  * de ejecución del sistema.
  *  * @author 
  * 		Juan Carlos Estrada

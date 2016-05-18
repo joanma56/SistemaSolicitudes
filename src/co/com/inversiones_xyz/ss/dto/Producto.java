@@ -10,15 +10,12 @@ package co.com.inversiones_xyz.ss.dto;
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
  * 			08/05/2016
- * @param codigo: Identificador del producto
- * @param nombre: Nombre del producto
- * @param descripcion: Información que describe al producto
  */
 public class Producto {
 	
-	private Integer codigo;	
-	private String nombre;	
-	private String descripcion;		
+	private Integer codigo;	//Identificador del producto
+	private String nombre; //Nombre del producto	
+	private String descripcion;	//Información que describe al producto
 	
 	public Integer getCodigo() { 				
 		return codigo;

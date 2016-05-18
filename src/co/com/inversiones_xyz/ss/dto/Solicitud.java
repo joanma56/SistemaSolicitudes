@@ -10,34 +10,24 @@ package co.com.inversiones_xyz.ss.dto;
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
  * 			08/05/2016
- * @param radicado: Identificador único de la solicitud
- * @param nombres: Nombres del cliente que generó la solicitud	
- * @param apellidos: Apellidos del cliente que generó la solicitud
- * @param correo: Correo del cliente que generó la solicitud
- * @param telefono: Teléfono del cliente que generó la solicitud
- * @param celular: Celular del cliente que generó la solicitud
- * @param descripcion: Texto con la descripción y asunto de la solicitud
- * @param sucursal: Sucursal asociada a la solicitud o que puede ser objeto de la misma
- * @param tipoSolicitud: Clave foranea a tipo de solicitud
- * @param producto: Producto asociado a una solicitud bien sea porque fue adquirido en la empresa
- * 					o del que se desea pedir información, dar una queja, etc.
- * @param seguimiento: clave foranea a la tabla seguimiento
- * 					   Seguimiento acerca del estado y respuesta a una solicitud
+ * 					   
  */
 
 public class Solicitud {
 	
-	private Integer radicado;				
-	private String nombres;
-	private String apellidos;				
-	private String correo;					
-	private String telefono;				
-	private String celular;					
-	private String descripcion;				
-	private Sucursal sucursal;				
-	private TipoSolicitud tipoSolicitud;
-	private Producto producto;				
-	private Seguimiento seguimiento;
+	private Integer radicado; //Identificador único de la solicitud			
+	private String nombres; //Nombres del cliente que generó la solicitud
+	private String apellidos; //Apellidos del cliente que generó la solicitud			
+	private String correo;	//Correo del cliente que generó la solicitud				
+	private String telefono; //Teléfono del cliente que generó la solicitud			
+	private String celular;	//Celular del cliente que generó la solicitud			
+	private String descripcion;	//Texto con la descripción y asunto de la solicitud		
+	private Sucursal sucursal; //Sucursal asociada a la solicitud o que puede ser objeto de la misma
+	private TipoSolicitud tipoSolicitud; //Clave foranea a tipo de solicitud
+	private Producto producto;	/*Producto asociado a una solicitud bien sea porque fue adquirido en la empresa
+	  							o del que se desea pedir información, dar una queja, etc. */		
+	private Seguimiento seguimiento; /*clave foranea a la tabla seguimiento
+									 Seguimiento acerca del estado y respuesta a una solicitud*/
 
 	public Integer getRadicado() {
 		return radicado;

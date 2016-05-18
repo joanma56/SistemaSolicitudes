@@ -1,5 +1,16 @@
 package co.com.inversiones_xyz.ss.excepcion;
 
+/**
+ * Clase que nos permite manejar la captura de errores (asociados a servicios) generadas en tiempo 
+ * de ejecución del sistema.
+ * 
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			08/05/2016
+ */
 public class ServiceException extends Exception{
 
 	public ServiceException() {

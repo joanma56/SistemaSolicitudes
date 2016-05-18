@@ -6,27 +6,26 @@
     <class name="co.com.inversiones_xyz.ss.dto.Seguimiento" table="SEGUIMIENTO">
     
         <id name="id" type="java.lang.Integer">
-            <column name="ID" precision="11"/>
+            <column name="Id" precision="11"/>
             <generator class="assigned" />
         </id>
-        
         <property name="fechaCreacion" type="java.util.Date">
-            <column name="FECHACREACION" not-null="true"/>
+            <column name="FechaCreacion" not-null="true"/>
         </property>
         <property name="fechaReasignada" type="java.util.Date">
-            <column name="FECHAREASIGNADA" />
+            <column name="FechaReasignada" />
         </property>
         <property name="fechaRespondida" type="java.util.Date">
-            <column name="FECHARESPONDIDA" />
+            <column name="FechaRespondida" />
         </property>
         <property name="estado" type="byte">
-            <column name="ESTADO" precision="1"/>
+            <column name="Estado" precision="1"/>
         </property>
         <property name="satisfaccion" type="java.lang.String">
-            <column name="SATISFACCION" length="10"/>
+            <column name="Satisfaccion" length="10"/>
         </property>
         <many-to-one name="responsable" class="co.com.inversiones_xyz.ss.dto.Usuario">
-            <column name="RESPONSABLE" length="10" not-null="true"/>
+            <column name="Responsable" length="10" not-null="true"/>
         </many-to-one>
     </class>
 </hibernate-mapping>

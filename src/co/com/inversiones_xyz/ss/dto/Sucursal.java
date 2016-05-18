@@ -11,18 +11,14 @@ package co.com.inversiones_xyz.ss.dto;
  * 		Joan Manuel Rodríguez
  * @version 1.0.0
  * 			08/05/2016
- * @param codigo: Identificador de la sucursal
- * @param nombre: Nombre de la sucursal	
- * @param direccion: Dirección de la sucursal
- * @param ciudad: Ciudad en la que se encuentra ubicada la sucursal
  *
  */
 
 public class Sucursal {
-	private String codigo;		
-	private String nombre;	
-	private String direccion;	
-	private String ciudad;		
+	private String codigo;	//Identificador de la sucursal	
+	private String nombre;	//Nombre de la sucursal	
+	private String direccion; //Dirección de la sucursal	
+	private String ciudad;	//Ciudad en la que se encuentra ubicada la sucursal
 	
 	public String getCodigo() {
 		return codigo;

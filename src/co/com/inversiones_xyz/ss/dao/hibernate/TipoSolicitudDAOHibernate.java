@@ -7,9 +7,21 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import co.com.inversiones_xyz.ss.dao.TipoSolicitudDAO;
 import co.com.inversiones_xyz.ss.dto.TipoSolicitud;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
-
+/**
+ * 
+ * @author 
+ * 		Juan Carlos Estrada
+ * 		Rafael Luna Pérez
+ * 		Joan Manuel Rodríguez
+ * @version 1.0.0
+ * 			12/05/2016
+ *
+ */
 public class TipoSolicitudDAOHibernate extends HibernateDaoSupport implements TipoSolicitudDAO{
 
+	/**
+	 * Permite obtener un tipoSolicitud dado el codigo
+	 */
 	@Override
 	public TipoSolicitud obtener(int codigo) throws DaoException {
 		Session session = null;

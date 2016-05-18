@@ -6,14 +6,14 @@
     <class name="co.com.inversiones_xyz.ss.dto.Producto" table="PRODUCTO">
     
         <id name="codigo" type="java.lang.Integer">
-            <column name="CODIGO" precision="11"/>
+            <column name="Codigo" precision="11"/>
             <generator class="assigned" />
         </id>
         <property name="nombre" type="java.lang.String">
-            <column name="NOMBRE" length="30" not-null="true"/>
+            <column name="Nombre" length="30" not-null="true"/>
         </property>
         <property name="descripcion" type="java.lang.String">
-            <column name="DESCRIPCION" length="150"/>
+            <column name="Descripcion" length="150"/>
         </property>
     </class>
 </hibernate-mapping>
