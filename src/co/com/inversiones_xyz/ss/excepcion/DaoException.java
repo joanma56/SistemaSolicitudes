@@ -1,5 +1,8 @@
 package co.com.inversiones_xyz.ss.excepcion;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 /**
  * Clase que nos permite manejar la captura de errores (asociados a la comunicacion con la BD) generadas en tiempo 
  * de ejecución del sistema.
@@ -14,8 +17,11 @@ package co.com.inversiones_xyz.ss.excepcion;
 
 public class DaoException extends Exception{
 	
+	private final static Logger log = Logger.getLogger(Log4jException.class);
+	
 	public DaoException() {
-		// TODO Auto-generated constructor stub
+		PropertyConfigurator.configure("log4j.properties");
+		log.info("Un info");
 	}
 
 	public DaoException(String arg0) {

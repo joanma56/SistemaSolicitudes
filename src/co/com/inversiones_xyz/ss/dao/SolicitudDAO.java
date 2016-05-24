@@ -26,13 +26,6 @@ public interface SolicitudDAO {
 	public Solicitud insertar(Solicitud solicitud)throws DaoException;
 
 	/**
-	 * Entrega la lista de solicitudes activas en el sistema
-	 * @return lista de solicitudes
-	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
-	 */
-	public List<Solicitud> obtener()throws DaoException;
-
-	/**
 	 * Entrega la informacion de una solicitud dado su numero de radicado
 	 * @param radicado: radicado de la solicitud
 	 * @return instancia de los datos de la solicitud
@@ -47,4 +40,19 @@ public interface SolicitudDAO {
 	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
 	 */
 	public Solicitud modificar(Solicitud solicitud)throws DaoException;
+
+	/**
+	 * Entrega las solicitudes dado un responsable asignado
+	 * @param userName: nombre de usuario por el cual se desean consultar las solicitudes
+	 * @return lista de solicitudes 
+	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
+	 */
+	public List<Solicitud> obtenerPorUsuario(String userName)throws DaoException;
+	
+	/**
+	 * Entrega todas las solicitudes activas en el sistema
+	 * @return lista de solicitudes
+	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
+	 */
+	public List<Solicitud> obtener()throws DaoException;
 }

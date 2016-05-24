@@ -67,6 +67,10 @@
 	    <property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
+	<bean id="rolDao" class="co.com.inversiones_xyz.ss.dao.hibernate.RolDAOHibernate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
 	<bean id="solicitudService" class="co.com.inversiones_xyz.ss.service.SolicitudService">
 	    <property name="solicitudDAO" ref="solicitudDao"></property>
 	    <property name="seguimientoDAO" ref="seguimientoDao"></property>
@@ -74,6 +78,7 @@
 	    <property name="productoDAO" ref="productoDao"></property>
 	    <property name="tipoSolicitudDAO" ref="tipoSolicitudDao"></property>
 	    <property name="usuarioDAO" ref="usuarioDao"></property>
+	    <property name="rolDAO" ref="rolDao"></property>
 	</bean>
 	
 	<context:component-scan base-package="co.com.inversiones_xyz.ss"/>

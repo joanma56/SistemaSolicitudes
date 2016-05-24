@@ -1,11 +1,15 @@
 package co.com.inversiones_xyz.ss.dao.hibernate;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.com.inversiones_xyz.ss.dao.SeguimientoDAO;
 import co.com.inversiones_xyz.ss.dto.Seguimiento;
+import co.com.inversiones_xyz.ss.dto.Usuario;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 /**
  * 
@@ -64,5 +68,5 @@ public class SeguimientoDAOHibernate extends HibernateDaoSupport implements Segu
 		}
 		return seguimiento;
 	}
-	
+		
 }
