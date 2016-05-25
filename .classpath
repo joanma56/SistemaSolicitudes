@@ -8,5 +8,39 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LogerException"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/hibernate3.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="G:/hibernate/LibreriasHibernate/slf4j-log4j12-1.7.2.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/com.springsource.org.aopalliance-1.0.0.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/commons-logging.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/hibernate3.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/mysql-connector-java-5.1.22-bin.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/slf4j-log4j12-1.7.2.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-aop-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-beans-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-context-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-core-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-expression-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-jdbc-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-orm-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-test-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-tx-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/librerias/spring-web-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="G:/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="G:/mysql-connector-java-5.1.22-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

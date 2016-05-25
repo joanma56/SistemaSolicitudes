@@ -4739,3 +4739,181 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 18:25:06,532  INFO GenericApplicationContext:862 - Closing org.springframework.context.support.GenericApplicationContext@56f4468b: startup date [Tue May 24 18:25:04 COT 2016]; root of context hierarchy
 18:25:06,537  INFO LocalSessionFactoryBean:225 - Closing Hibernate SessionFactory
 18:25:06,538  INFO SessionFactoryImpl:927 - closing
+09:19:50,689  INFO DefaultTestContextBootstrapper:256 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+09:19:50,695  INFO DefaultTestContextBootstrapper:204 - Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+09:19:50,704  INFO DefaultTestContextBootstrapper:182 - Using TestExecutionListeners: [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@15975490, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6b143ee9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1936f0f5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6615435c]
+09:19:51,055  INFO XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [configuracion.xml]
+09:19:51,823  INFO GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@548a9f61: startup date [Wed May 25 09:19:51 COT 2016]; root of context hierarchy
+09:19:52,061  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:19:52,242  INFO Version:37 - Hibernate Commons Annotations 3.2.0.Final
+09:19:52,306  INFO Environment:603 - Hibernate 3.6.10.Final
+09:19:52,322  INFO Environment:636 - hibernate.properties not found
+09:19:52,325  INFO Environment:814 - Bytecode provider name : javassist
+09:19:52,328  INFO Environment:695 - using JDK 1.4 java.sql.Timestamp handling
+09:19:52,501  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,596  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,613  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,627  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,637  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,647  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,655  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:19:52,857  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Producto -> PRODUCTO
+09:19:52,864  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Rol -> ROL
+09:19:52,864  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Seguimiento -> SEGUIMIENTO
+09:19:52,869  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Solicitud -> SOLICITUD
+09:19:52,871  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Sucursal -> SUCURSAL
+09:19:52,871  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.TipoSolicitud -> TIPOSOLICITUD
+09:19:52,871  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Usuario -> usuario
+09:19:52,937  INFO Configuration:1676 - Hibernate Validator not found: ignoring
+09:19:52,938  INFO LocalSessionFactoryBean:713 - Building new Hibernate SessionFactory
+09:19:52,941  INFO HibernateSearchEventListenerRegister:75 - Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+09:19:53,035  INFO ConnectionProviderFactory:173 - Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+09:19:53,607  INFO Dialect:136 - Using dialect: org.hibernate.dialect.MySQLDialect
+09:19:53,625  INFO SettingsFactory:126 - Database ->
+       name : MySQL
+    version : 5.5.24-log
+      major : 5
+      minor : 5
+09:19:53,626  INFO SettingsFactory:132 - Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.22 ( Revision: ${bzr.revision-id} )
+      major : 5
+      minor : 1
+09:19:53,629  INFO TransactionFactoryFactory:65 - Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+09:19:53,642  INFO TransactionManagerLookupFactory:83 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+09:19:53,643  INFO SettingsFactory:179 - Automatic flush during beforeCompletion(): disabled
+09:19:53,643  INFO SettingsFactory:183 - Automatic session close at end of transaction: disabled
+09:19:53,643  INFO SettingsFactory:190 - JDBC batch size: 15
+09:19:53,643  INFO SettingsFactory:193 - JDBC batch updates for versioned data: disabled
+09:19:53,644  INFO SettingsFactory:198 - Scrollable result sets: enabled
+09:19:53,644  INFO SettingsFactory:206 - JDBC3 getGeneratedKeys(): enabled
+09:19:53,644  INFO SettingsFactory:214 - Connection release mode: auto
+09:19:53,645  INFO SettingsFactory:238 - Maximum outer join fetch depth: 2
+09:19:53,645  INFO SettingsFactory:241 - Default batch fetch size: 1
+09:19:53,645  INFO SettingsFactory:245 - Generate SQL with comments: disabled
+09:19:53,645  INFO SettingsFactory:249 - Order SQL updates by primary key: disabled
+09:19:53,645  INFO SettingsFactory:253 - Order SQL inserts for batching: disabled
+09:19:53,645  INFO SettingsFactory:431 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+09:19:53,647  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+09:19:53,647  INFO SettingsFactory:261 - Query language substitutions: {}
+09:19:53,647  INFO SettingsFactory:266 - JPA-QL strict compliance: disabled
+09:19:53,647  INFO SettingsFactory:271 - Second-level cache: enabled
+09:19:53,647  INFO SettingsFactory:275 - Query cache: disabled
+09:19:53,647  INFO SettingsFactory:406 - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+09:19:53,648  INFO SettingsFactory:285 - Optimize cache for minimal puts: disabled
+09:19:53,648  INFO SettingsFactory:294 - Structured second-level cache entries: disabled
+09:19:53,650  INFO SettingsFactory:314 - Echoing all SQL to stdout
+09:19:53,651  INFO SettingsFactory:323 - Statistics: disabled
+09:19:53,651  INFO SettingsFactory:327 - Deleted entity synthetic identifier rollback: disabled
+09:19:53,651  INFO SettingsFactory:343 - Default entity-mode: pojo
+09:19:53,651  INFO SettingsFactory:347 - Named query checking : enabled
+09:19:53,652  INFO SettingsFactory:351 - Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+09:19:53,677  INFO SessionFactoryImpl:202 - building session factory
+09:19:53,682  INFO BasicTypeRegistry:150 - Type registration [blob] overrides previous : org.hibernate.type.BlobType@64e7619d
+09:19:53,682  INFO BasicTypeRegistry:150 - Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@64e7619d
+09:19:53,682  INFO BasicTypeRegistry:150 - Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@495ee280
+09:19:53,682  INFO BasicTypeRegistry:150 - Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@4fa1c212
+09:19:53,682  INFO BasicTypeRegistry:150 - Type registration [clob] overrides previous : org.hibernate.type.ClobType@6ea2bc93
+09:19:53,682  INFO BasicTypeRegistry:150 - Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@6ea2bc93
+09:19:53,683  INFO BasicTypeRegistry:150 - Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@3116c353
+09:19:53,683  INFO BasicTypeRegistry:150 - Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@f627d13
+09:19:53,683  INFO BasicTypeRegistry:150 - Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@4e928fbf
+09:19:53,990  INFO SessionFactoryObjectFactory:105 - Not binding factory to JNDI, no JNDI name configured
+09:19:54,237  INFO TransactionContext:101 - Began transaction (1) for test context [DefaultTestContext@302a07d testClass = ProductoDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.ProductoDAOHibernateTest@5cdd09b1, testMethod = testObtener@ProductoDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@8c11eee testClass = ProductoDAOHibernateTest, locations = '{classpath:configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@7e8dcdaa]; rollback [true]
+09:19:54,260  INFO TransactionContext:136 - Rolled back transaction for test context [DefaultTestContext@302a07d testClass = ProductoDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.ProductoDAOHibernateTest@5cdd09b1, testMethod = testObtener@ProductoDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@8c11eee testClass = ProductoDAOHibernateTest, locations = '{classpath:configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+09:19:54,276  INFO GenericApplicationContext:862 - Closing org.springframework.context.support.GenericApplicationContext@548a9f61: startup date [Wed May 25 09:19:51 COT 2016]; root of context hierarchy
+09:19:54,279  INFO LocalSessionFactoryBean:225 - Closing Hibernate SessionFactory
+09:19:54,279  INFO SessionFactoryImpl:927 - closing
+09:20:34,106  INFO DefaultTestContextBootstrapper:256 - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+09:20:34,113  INFO DefaultTestContextBootstrapper:204 - Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+09:20:34,120  INFO DefaultTestContextBootstrapper:182 - Using TestExecutionListeners: [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@6b143ee9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1936f0f5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6615435c, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4909b8da]
+09:20:34,202  INFO XmlBeanDefinitionReader:317 - Loading XML bean definitions from class path resource [Configuracion.xml]
+09:20:34,380  INFO GenericApplicationContext:510 - Refreshing org.springframework.context.support.GenericApplicationContext@1753acfe: startup date [Wed May 25 09:20:34 COT 2016]; root of context hierarchy
+09:20:34,473  INFO DriverManagerDataSource:133 - Loaded JDBC driver: com.mysql.jdbc.Driver
+09:20:34,575  INFO Version:37 - Hibernate Commons Annotations 3.2.0.Final
+09:20:34,579  INFO Environment:603 - Hibernate 3.6.10.Final
+09:20:34,580  INFO Environment:636 - hibernate.properties not found
+09:20:34,582  INFO Environment:814 - Bytecode provider name : javassist
+09:20:34,584  INFO Environment:695 - using JDK 1.4 java.sql.Timestamp handling
+09:20:34,639  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,669  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,684  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,694  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,704  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,713  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,721  WARN DTDEntityResolver:73 - recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+09:20:34,755  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Producto -> PRODUCTO
+09:20:34,762  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Rol -> ROL
+09:20:34,762  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Seguimiento -> SEGUIMIENTO
+09:20:34,765  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Solicitud -> SOLICITUD
+09:20:34,766  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Sucursal -> SUCURSAL
+09:20:34,766  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.TipoSolicitud -> TIPOSOLICITUD
+09:20:34,766  INFO HbmBinder:353 - Mapping class: co.com.inversiones_xyz.ss.dto.Usuario -> usuario
+09:20:34,770  INFO Configuration:1676 - Hibernate Validator not found: ignoring
+09:20:34,771  INFO LocalSessionFactoryBean:713 - Building new Hibernate SessionFactory
+09:20:34,774  INFO HibernateSearchEventListenerRegister:75 - Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+09:20:34,783  INFO ConnectionProviderFactory:173 - Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+09:20:34,994  INFO Dialect:136 - Using dialect: org.hibernate.dialect.MySQLDialect
+09:20:35,002  INFO SettingsFactory:126 - Database ->
+       name : MySQL
+    version : 5.5.24-log
+      major : 5
+      minor : 5
+09:20:35,002  INFO SettingsFactory:132 - Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.22 ( Revision: ${bzr.revision-id} )
+      major : 5
+      minor : 1
+09:20:35,005  INFO TransactionFactoryFactory:65 - Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+09:20:35,005  INFO TransactionManagerLookupFactory:83 - No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+09:20:35,006  INFO SettingsFactory:179 - Automatic flush during beforeCompletion(): disabled
+09:20:35,006  INFO SettingsFactory:183 - Automatic session close at end of transaction: disabled
+09:20:35,006  INFO SettingsFactory:190 - JDBC batch size: 15
+09:20:35,006  INFO SettingsFactory:193 - JDBC batch updates for versioned data: disabled
+09:20:35,006  INFO SettingsFactory:198 - Scrollable result sets: enabled
+09:20:35,006  INFO SettingsFactory:206 - JDBC3 getGeneratedKeys(): enabled
+09:20:35,007  INFO SettingsFactory:214 - Connection release mode: auto
+09:20:35,007  INFO SettingsFactory:238 - Maximum outer join fetch depth: 2
+09:20:35,007  INFO SettingsFactory:241 - Default batch fetch size: 1
+09:20:35,007  INFO SettingsFactory:245 - Generate SQL with comments: disabled
+09:20:35,007  INFO SettingsFactory:249 - Order SQL updates by primary key: disabled
+09:20:35,008  INFO SettingsFactory:253 - Order SQL inserts for batching: disabled
+09:20:35,008  INFO SettingsFactory:431 - Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+09:20:35,009  INFO ASTQueryTranslatorFactory:47 - Using ASTQueryTranslatorFactory
+09:20:35,009  INFO SettingsFactory:261 - Query language substitutions: {}
+09:20:35,009  INFO SettingsFactory:266 - JPA-QL strict compliance: disabled
+09:20:35,009  INFO SettingsFactory:271 - Second-level cache: enabled
+09:20:35,009  INFO SettingsFactory:275 - Query cache: disabled
+09:20:35,009  INFO SettingsFactory:406 - Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+09:20:35,010  INFO SettingsFactory:285 - Optimize cache for minimal puts: disabled
+09:20:35,010  INFO SettingsFactory:294 - Structured second-level cache entries: disabled
+09:20:35,012  INFO SettingsFactory:314 - Echoing all SQL to stdout
+09:20:35,013  INFO SettingsFactory:323 - Statistics: disabled
+09:20:35,013  INFO SettingsFactory:327 - Deleted entity synthetic identifier rollback: disabled
+09:20:35,013  INFO SettingsFactory:343 - Default entity-mode: pojo
+09:20:35,013  INFO SettingsFactory:347 - Named query checking : enabled
+09:20:35,013  INFO SettingsFactory:351 - Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+09:20:35,024  INFO SessionFactoryImpl:202 - building session factory
+09:20:35,028  INFO BasicTypeRegistry:150 - Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@495ee280
+09:20:35,028  INFO BasicTypeRegistry:150 - Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@4fa1c212
+09:20:35,028  INFO BasicTypeRegistry:150 - Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@6ea2bc93
+09:20:35,028  INFO BasicTypeRegistry:150 - Type registration [clob] overrides previous : org.hibernate.type.ClobType@3116c353
+09:20:35,028  INFO BasicTypeRegistry:150 - Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@3116c353
+09:20:35,029  INFO BasicTypeRegistry:150 - Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@f627d13
+09:20:35,029  INFO BasicTypeRegistry:150 - Type registration [blob] overrides previous : org.hibernate.type.BlobType@4e928fbf
+09:20:35,029  INFO BasicTypeRegistry:150 - Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@4e928fbf
+09:20:35,029  INFO BasicTypeRegistry:150 - Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@352ff4da
+09:20:35,227  INFO SessionFactoryObjectFactory:105 - Not binding factory to JNDI, no JNDI name configured
+09:20:35,437  INFO TransactionContext:101 - Began transaction (1) for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@8c11eee, testMethod = testObtener@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@681a8b4e]; rollback [true]
+09:20:35,461  INFO TransactionContext:136 - Rolled back transaction for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@8c11eee, testMethod = testObtener@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+09:20:35,472  INFO TransactionContext:101 - Began transaction (1) for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@2374d36a, testMethod = testObtenerPorUsuario@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@681a8b4e]; rollback [true]
+09:20:35,474  INFO TransactionContext:136 - Rolled back transaction for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@2374d36a, testMethod = testObtenerPorUsuario@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+09:20:35,482  INFO TransactionContext:101 - Began transaction (1) for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@b70da4c, testMethod = testModificar@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@681a8b4e]; rollback [true]
+09:20:35,515  INFO TransactionContext:136 - Rolled back transaction for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@b70da4c, testMethod = testModificar@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+09:20:35,523  INFO TransactionContext:101 - Began transaction (1) for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@5d1659ea, testMethod = testObtenerTodasSolicitudes@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@681a8b4e]; rollback [true]
+09:20:35,572  INFO TransactionContext:136 - Rolled back transaction for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@5d1659ea, testMethod = testObtenerTodasSolicitudes@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+09:20:35,580  INFO TransactionContext:101 - Began transaction (1) for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@5b1f29fa, testMethod = testInsertar@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate3.HibernateTransactionManager@681a8b4e]; rollback [true]
+09:20:35,604  INFO TransactionContext:136 - Rolled back transaction for test context [DefaultTestContext@5cdd09b1 testClass = SolicitudDAOHibernateTest, testInstance = co.com.inversiones_xyz.ss.dao.hibernate.SolicitudDAOHibernateTest@5b1f29fa, testMethod = testInsertar@SolicitudDAOHibernateTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e8dcdaa testClass = SolicitudDAOHibernateTest, locations = '{classpath:Configuracion.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]].
+09:20:35,606  INFO GenericApplicationContext:862 - Closing org.springframework.context.support.GenericApplicationContext@1753acfe: startup date [Wed May 25 09:20:34 COT 2016]; root of context hierarchy
+09:20:35,609  INFO LocalSessionFactoryBean:225 - Closing Hibernate SessionFactory
+09:20:35,609  INFO SessionFactoryImpl:927 - closing

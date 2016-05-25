@@ -1,5 +1,6 @@
 package co.com.inversiones_xyz.ss.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -137,7 +138,8 @@ public class SolicitudService {
 
 	/**
 	 * Permite al gerente de cuentas hacer seguimiento a todas las solicitudes
-	 * activas en el sistema
+	 * activas en el sistema. Validaremos primero que el usuario ingresado 
+	 * tenga el rol de gerente de cuentas coorporativas.
 	 * 
 	 * @param nombreUsuario
 	 *            nombre de usuario para obtener el rol y verificar que sea el
@@ -150,7 +152,7 @@ public class SolicitudService {
 	 * @throws ServiceException
 	 *             cuando el parametro ingresado no es valido
 	 */
-	public void seguirSolicitudes(String nombreUsuario, String codigoRol) throws DaoException, ServiceException {
+	public List<Solicitud> seguirSolicitudes(String nombreUsuario, String codigoRol) throws DaoException, ServiceException {
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
@@ -163,13 +165,14 @@ public class SolicitudService {
 		if (null != rol) {
 			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())) {
 				solicitudes = solicitudDAO.obtener();
-				for (Solicitud solicitud : solicitudes) {
-					seguimiento = solicitud.getSeguimiento();
-					// Pendientes por operar las solicitudes y los seguimientos
-				}
+			}else{
+				throw new ServiceException("usuario no es el gerente de cuentas coorporativas");
 			}
-		} else
-			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
+		} else{
+			throw new ServiceException("rol es nulo");
+		}
+		
+		return solicitudes;
 	}
 
 	/**
@@ -351,7 +354,7 @@ public class SolicitudService {
 	 */
 	public String consultarResultadoEncuentas(Integer radicado, String nombreUsuario, String codigoRol)
 			throws DaoException, ServiceException {
-		if (0 == radicado) {
+		if (null == radicado) {
 			throw new ServiceException("El radicado no puede ser nulo o una cadena vacia");
 		}
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
@@ -367,14 +370,64 @@ public class SolicitudService {
 				Solicitud solicitud = solicitudDAO.obtener(radicado);
 				if (null != solicitud) {
 					seguimiento = solicitud.getSeguimiento();
-					return seguimiento.getSatisfaccion();
-				}
+					if(seguimiento.getSatisfaccion()!=null){
+						return seguimiento.getSatisfaccion();
+					}
+				}else{
+					throw new ServiceException("No existe solicitud con ese número de radicado "+radicado);
+				}	
 			} else {
 				throw new ServiceException("Usuario no autorizado para revisar encuesta");
 			}
-		} else
+		} else{
 			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
+			}
 		return null;
+	}
+	
+	/**
+	 * Permite al gerente consultar los resultados de las encuestas que han sido 
+	 * respondidas por los clientes, al revisar la respuesta de sus solicitudes.
+	 * 
+	 * @param nombreUsuario
+	 *            nombre de usuario que realiza la consulta
+	 * @param codigoRol
+	 *            codigo del rol gerente de cuentas
+	 * @return la respuesta hecha por el cliente a la encuenta
+	 * @throws DaoException
+	 *             cuando ocurre un error al instanciar un usuario en la BD
+	 * @throws ServiceException
+	 *             cuando ingresan algun parametro no valido
+	 */
+	public List<String> consultarResultadosEncuentas(String nombreUsuario, String codigoRol)
+			throws DaoException, ServiceException {
+		
+		if (Validaciones.isTextoVacio(nombreUsuario)) {
+			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
+		}
+		if (Validaciones.isTextoVacio(codigoRol)) {
+			throw new ServiceException("El codigo de rol no puede ser nulo, ni una cadena de caracteres vacia");
+		}
+		Seguimiento seguimiento = null;
+		rol = rolDAO.obtener(codigoRol);
+		if (null != rol) {
+			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())) {
+				List<Solicitud> solicitudes = solicitudDAO.obtener();
+				List<String> resultados=new ArrayList<String>();
+				for(Solicitud solicitud:solicitudes){
+					seguimiento=solicitud.getSeguimiento();
+					if(seguimiento.getSatisfaccion()!=null){
+						resultados.add(seguimiento.getSatisfaccion());
+					}
+				}
+				return resultados;
+			} else {
+				throw new ServiceException("Usuario no autorizado para revisar encuestas");
+			}
+		} else{
+			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
+			}
+		//return null;
 	}
 
 	/**
