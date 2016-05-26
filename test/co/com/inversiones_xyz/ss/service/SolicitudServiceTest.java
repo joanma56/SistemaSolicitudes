@@ -88,10 +88,10 @@ public class SolicitudServiceTest {
 	}
 
 	@Test
-	public void testConsultarResultadosEncuestas() throws DaoException, ServiceException{
+	public void testConsultarResultadoEncuestas() throws DaoException, ServiceException{
 		try{
-			String resultado = solicitudService.consultarResultadoEncuentas(1234, "aperez", "AB102");
-			System.out.println(resultado);
+			String resultado = solicitudService.consultarResultadoEncuentas(123456, "aperez", "AB102");
+			System.out.println("Resultado: "+resultado);
 		}catch(DaoException ex){
 			fail(ex.getMessage());
 		}catch(ServiceException ex){
@@ -99,6 +99,21 @@ public class SolicitudServiceTest {
 		}
 	}
 
+	@Test
+	public void testConsultarResultadosEncuestas() throws DaoException, ServiceException{
+		List<String> resultados = null;
+		try{
+			resultados = solicitudService.consultarResultadosEncuentas("aperez", "AB102");
+			for(String resultado :resultados){
+				System.out.println("Resultado: "+resultado);
+			}
+		}catch(DaoException ex){
+			fail(ex.getMessage());
+		}catch(ServiceException ex){
+			fail(ex.getMessage());
+		}
+	}
+	
 	@Test
 	public void testSeguirSolicitudes() throws DaoException, ServiceException{
 		try{
