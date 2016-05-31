@@ -2,6 +2,8 @@ package co.com.inversiones_xyz.ss.dao.hibernate;
 
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,19 @@ public class UsuarioDAOHibernateTest {
 				System.out.println(usuario.getNombres() + usuario.getApellidos() + usuario.getCorreo()
 						+ usuario.getRol().getNombre());
 		} catch (DaoException ex) {
+			fail(ex.getMessage());
+		}
+	}
+	
+	@Test
+	public void testObtenerTodos()throws DaoException{
+		List<Usuario> usuarios = null;
+		try{
+			usuarios = usuarioDao.obtener();
+			for(Usuario usuario: usuarios){
+				System.out.println(usuario.getNombreUsuario()+usuario.getNombres()+usuario.getApellidos());
+			}
+		}catch(DaoException ex){
 			fail(ex.getMessage());
 		}
 	}

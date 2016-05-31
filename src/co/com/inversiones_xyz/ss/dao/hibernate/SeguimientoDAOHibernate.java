@@ -50,7 +50,7 @@ public class SeguimientoDAOHibernate extends HibernateDaoSupport implements Segu
 		}catch(HibernateException ex){
 			throw new DaoException(ex);
 		}
-		return null;
+		return seguimiento;
 	}
 
 	/**

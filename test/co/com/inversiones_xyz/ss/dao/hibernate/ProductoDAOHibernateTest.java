@@ -2,6 +2,8 @@ package co.com.inversiones_xyz.ss.dao.hibernate;
 
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,19 @@ public class ProductoDAOHibernateTest {
 			producto = productoDao.obtener(12001);
 			if(null!=producto)
 				System.out.println(producto.getNombre()+producto.getDescripcion());
+		}catch(DaoException ex){
+			fail(ex.getMessage());
+		}
+	}
+	
+	@Test
+	public void testObtenerTodos()throws DaoException{
+		List<Producto> productos = null;
+		try{
+			productos = productoDao.obtener();
+			for(Producto producto: productos){
+				System.out.println(producto.getCodigo()+producto.getNombre()+producto.getDescripcion());
+			}
 		}catch(DaoException ex){
 			fail(ex.getMessage());
 		}

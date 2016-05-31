@@ -1,5 +1,8 @@
 package co.com.inversiones_xyz.ss.dao.hibernate;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -33,5 +36,23 @@ public class TipoSolicitudDAOHibernate extends HibernateDaoSupport implements Ti
 			throw new DaoException(ex);
 		}
 		return tipoSolicitud;
+	}
+	
+	/**
+	 * Permite obtener todos los tipoSolicituds del sistema
+	 */
+	@Override
+	public List<TipoSolicitud> obtener() throws DaoException {
+		List<TipoSolicitud> tipoSolicitudes = null;
+		Session session = null;
+		Criteria criteria = null;
+		try {
+			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+			criteria = session.createCriteria(TipoSolicitud.class);
+			tipoSolicitudes = criteria.list();
+		} catch (HibernateException ex) {
+			throw new DaoException(ex);
+		}
+		return tipoSolicitudes;
 	}
 }

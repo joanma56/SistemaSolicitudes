@@ -30,6 +30,7 @@ public class SeguimientoDAOHibernateTest {
 		seguimiento.setEstado((byte) 0);
 		try {
 			seguimiento = seguimientoDao.insertar(seguimiento);
+			System.out.println(seguimiento.getId());
 		} catch (DaoException ex) {
 			fail(ex.getMessage());
 		}

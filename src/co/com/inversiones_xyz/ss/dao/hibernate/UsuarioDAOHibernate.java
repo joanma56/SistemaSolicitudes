@@ -1,5 +1,8 @@
 package co.com.inversiones_xyz.ss.dao.hibernate;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -35,4 +38,21 @@ public class UsuarioDAOHibernate extends HibernateDaoSupport implements UsuarioD
 		return usuario;
 	}
 
+	/**
+	 * Permite obtener todos los usuarios del sistema
+	 */
+	@Override
+	public List<Usuario> obtener() throws DaoException {
+		List<Usuario> usuarios = null;
+		Session session = null;
+		Criteria criteria = null;
+		try{
+			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+			criteria = session.createCriteria(Usuario.class);
+			usuarios = criteria.list();
+		}catch(HibernateException ex){
+			throw new DaoException(ex);
+		}
+		return usuarios;	
+	}
 }

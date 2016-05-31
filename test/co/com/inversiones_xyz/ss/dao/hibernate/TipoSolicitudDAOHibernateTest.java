@@ -2,6 +2,8 @@ package co.com.inversiones_xyz.ss.dao.hibernate;
 
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,19 @@ public class TipoSolicitudDAOHibernateTest {
 			if (null != tipo)
 				System.out.println(tipo.getNombre());
 		} catch (DaoException ex) {
+			fail(ex.getMessage());
+		}
+	}
+	
+	@Test
+	public void testObtenerTodos()throws DaoException{
+		List<TipoSolicitud> tipos = null;
+		try{
+			tipos = tipoDao.obtener();
+			for(TipoSolicitud tipo: tipos){
+				System.out.println(tipo.getCodigo()+tipo.getNombre());
+			}
+		}catch(DaoException ex){
 			fail(ex.getMessage());
 		}
 	}

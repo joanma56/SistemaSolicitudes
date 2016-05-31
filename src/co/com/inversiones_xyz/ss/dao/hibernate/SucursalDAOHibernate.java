@@ -1,5 +1,8 @@
 package co.com.inversiones_xyz.ss.dao.hibernate;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.classic.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -33,6 +36,24 @@ public class SucursalDAOHibernate extends HibernateDaoSupport implements Sucursa
 			throw new DaoException(ex);
 		}
 		return sucursal;
+	}
+	
+	/**
+	 * Permite obtener todos las sucursales del sistema
+	 */
+	@Override
+	public List<Sucursal> obtener() throws DaoException {
+		List<Sucursal> sucursales = null;
+		Session session = null;
+		Criteria criteria = null;
+		try {
+			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+			criteria = session.createCriteria(Sucursal.class);
+			sucursales = criteria.list();
+		} catch (HibernateException ex) {
+			throw new DaoException(ex);
+		}
+		return sucursales;
 	}
 
 }

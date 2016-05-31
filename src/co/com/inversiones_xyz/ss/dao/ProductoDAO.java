@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dao;
 
+import java.util.List;
+
 import co.com.inversiones_xyz.ss.dto.Producto;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 
@@ -22,4 +24,11 @@ public interface ProductoDAO {
 	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
 	 */
 	public Producto obtener(int codigo) throws DaoException;
+	
+	/**
+	 * Entrega los productos activos en el sistema
+	 * @return lista de instancias de los datos de todos los productos
+	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
+	 */
+	public List<Producto> obtener()throws DaoException;
 }

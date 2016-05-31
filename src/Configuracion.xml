@@ -81,6 +81,25 @@
 	    <property name="rolDAO" ref="rolDao"></property>
 	</bean>
 	
+	<bean id="seguimientoService" class="co.com.inversiones_xyz.ss.service.SeguimientoService">
+	    <property name="solicitudDAO" ref="solicitudDao"></property>
+	    <property name="seguimientoDAO" ref="seguimientoDao"></property>
+	    <property name="usuarioDAO" ref="usuarioDao"></property>
+	    <property name="rolDAO" ref="rolDao"></property>
+	</bean>
+	
+	<bean id="productoService" class="co.com.inversiones_xyz.ss.service.ProductoService">
+	    <property name="productoDAO" ref="productoDao"></property>
+	</bean>
+	
+	<bean id="sucursalService" class="co.com.inversiones_xyz.ss.service.SucursalService">
+	    <property name="sucursalDAO" ref="sucursalDao"></property>
+	</bean>
+	
+	<bean id="tipoSolicitudService" class="co.com.inversiones_xyz.ss.service.TipoSolicitudService">
+	    <property name="tipoDAO" ref="tipoSolicitudDao"></property>
+	</bean>
+	
 	<context:component-scan base-package="co.com.inversiones_xyz.ss"/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

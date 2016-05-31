@@ -2,15 +2,12 @@ package co.com.inversiones_xyz.ss.service;
 
 import static org.junit.Assert.fail;
 import java.util.List;
-import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import co.com.inversiones_xyz.ss.dao.SolicitudDAO;
 import co.com.inversiones_xyz.ss.dto.Solicitud;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 import co.com.inversiones_xyz.ss.excepcion.ServiceException;
@@ -25,7 +22,8 @@ public class SolicitudServiceTest {
 	@Test
 	public void testGenerarSolicitud() {
 		try{
-			solicitudService.generarSolicitud(123457, "Rafael", "Luna Perez", "ralp2089@gmail.com", "4427896", "3126171619", "Descripcion de la solicitud", "A101", 1002, 12001, 13001, "alopez");
+			Solicitud solicitud = solicitudService.generarSolicitud(123457, "Rafael", "Luna Perez", "ralp2089@gmail.com", "4427896", "3126171619", "Descripcion de la solicitud", "A101", 1002, 12001, 13001, "aperez");
+			System.out.println(solicitud.getRadicado()+solicitud.getDescripcion());
 		}catch(DaoException ex){
 			ex.printStackTrace();
 			fail(ex.getMessage());
@@ -41,8 +39,7 @@ public class SolicitudServiceTest {
 		try{
 			solicitudes = solicitudService.consultarSolicitudes("aperez");
 			for(Solicitud solicitud: solicitudes){
-				if(null!=solicitud)
-					System.out.println(solicitud.getNombres()+solicitud.getApellidos());
+				System.out.println(solicitud.getNombres()+solicitud.getApellidos());
 			}
 		}catch(DaoException ex){
 			fail(ex.getMessage());
@@ -64,60 +61,14 @@ public class SolicitudServiceTest {
 			fail(ex.getMessage());
 		}
 	}
-	
-	@Test
-	public void testResponderSolicitud() throws DaoException, ServiceException{
-		try{
-			solicitudService.responderSolicitud(1234, "aperez", "AB102");
-		}catch(DaoException ex){
-			fail(ex.getMessage());
-		}catch(ServiceException ex){
-			fail(ex.getMessage());
-		}		
-	}
 
-	@Test
-	public void testReasignarSolicitud() throws DaoException, ServiceException{
-		try{
-			solicitudService.reasignarSolicitud(1234, "aperez", "rluna", "AB102");
-		}catch(DaoException ex){
-			fail(ex.getMessage());
-		}catch(ServiceException ex){
-			fail(ex.getMessage());
-		}
-	}
-
-	@Test
-	public void testConsultarResultadoEncuestas() throws DaoException, ServiceException{
-		try{
-			String resultado = solicitudService.consultarResultadoEncuentas(123456, "aperez", "AB102");
-			System.out.println("Resultado: "+resultado);
-		}catch(DaoException ex){
-			fail(ex.getMessage());
-		}catch(ServiceException ex){
-			fail(ex.getMessage());
-		}
-	}
-
-	@Test
-	public void testConsultarResultadosEncuestas() throws DaoException, ServiceException{
-		List<String> resultados = null;
-		try{
-			resultados = solicitudService.consultarResultadosEncuentas("aperez", "AB102");
-			for(String resultado :resultados){
-				System.out.println("Resultado: "+resultado);
-			}
-		}catch(DaoException ex){
-			fail(ex.getMessage());
-		}catch(ServiceException ex){
-			fail(ex.getMessage());
-		}
-	}
-	
 	@Test
 	public void testSeguirSolicitudes() throws DaoException, ServiceException{
 		try{
-			solicitudService.seguirSolicitudes("aperez", "AB102");
+			List<Solicitud> solicitudes = solicitudService.seguirSolicitudes("aperez", "AB102");
+			for(Solicitud solicitud : solicitudes){
+				System.out.println(solicitud.getRadicado()+solicitud.getNombres());
+			}
 		}catch(DaoException ex){
 			fail(ex.getMessage());
 		}catch(ServiceException ex){

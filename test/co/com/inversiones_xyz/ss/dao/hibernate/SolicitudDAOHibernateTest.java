@@ -38,18 +38,18 @@ public class SolicitudDAOHibernateTest {
 		solicitud.setTipoSolicitud(tipoDao.obtener(1003));
 		try {
 
-			solicitudDao.insertar(solicitud);
+			solicitud = solicitudDao.insertar(solicitud);
+			System.out.println(solicitud.getNombres());
 		} catch (DaoException ex) {
 			fail(ex.getMessage());
 		}
 	}
 
 	@Test
-	public void testObtener() throws DaoException {
+	public void testObtenerPorRadicado() throws DaoException {
 		try {
-			Solicitud solicitud = solicitudDao.obtener(12345);
-			if (null != solicitud)
-				System.out.println(solicitud.getNombres());
+			Solicitud solicitud = solicitudDao.obtener(123456);
+			System.out.println(solicitud.getNombres());
 		} catch (DaoException ex) {
 			fail(ex.getMessage());
 		}
@@ -66,7 +66,8 @@ public class SolicitudDAOHibernateTest {
 		solicitud.setDescripcion("Texto de la solicitud");
 		solicitud.setTipoSolicitud(tipoDao.obtener(1004));
 		try {
-			solicitudDao.modificar(solicitud);
+			solicitud = solicitudDao.modificar(solicitud);
+			System.out.println(solicitud.getNombres());
 		} catch (DaoException ex) {
 			fail(ex.getMessage());
 		}
@@ -78,11 +79,8 @@ public class SolicitudDAOHibernateTest {
 		try {
 			solicitudes = solicitudDao.obtenerPorUsuario("aperez");
 			for (Solicitud solicitud : solicitudes) {
-				if (null != solicitud) {
-					System.out.println(solicitud.getRadicado() + solicitud.getNombres() + solicitud.getApellidos()
-							+ solicitud.getCorreo() + solicitud.getTelefono() + solicitud.getDescripcion()
-							+ solicitud.getTipoSolicitud().getNombre());
-				}
+				System.out.println(solicitud.getRadicado() + solicitud.getNombres() + solicitud.getApellidos()
+							+ solicitud.getCorreo() + solicitud.getTelefono() + solicitud.getDescripcion());
 			}
 		} catch (DaoException ex) {
 			fail(ex.getMessage());

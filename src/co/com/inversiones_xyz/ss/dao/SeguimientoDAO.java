@@ -1,9 +1,6 @@
 package co.com.inversiones_xyz.ss.dao;
 
-import java.util.List;
-
 import co.com.inversiones_xyz.ss.dto.Seguimiento;
-import co.com.inversiones_xyz.ss.dto.Usuario;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 
 /**

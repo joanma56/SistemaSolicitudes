@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dao;
 
+import java.util.List;
+
 import co.com.inversiones_xyz.ss.dto.TipoSolicitud;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 
@@ -22,4 +24,11 @@ public interface TipoSolicitudDAO {
 	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
 	 */
 	public TipoSolicitud obtener(int codigo)throws DaoException;
+	
+	/**
+	 * Entrega los tipos de solicitudes activos en el sistema
+	 * @return lista de instancias de los datos de todos los tipos de solicitudes
+	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
+	 */
+	public List<TipoSolicitud> obtener()throws DaoException;
 }

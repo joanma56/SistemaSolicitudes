@@ -35,7 +35,7 @@
         <many-to-one name="producto" class="co.com.inversiones_xyz.ss.dto.Producto">
             <column name="Producto" not-null="true"/>
         </many-to-one>
-        <many-to-one name="seguimiento" class="co.com.inversiones_xyz.ss.dto.Seguimiento" fetch="join">
+        <many-to-one name="seguimiento" class="co.com.inversiones_xyz.ss.dto.Seguimiento">
             <column name="Seguimiento_Id" not-null="true" />
         </many-to-one>
     </class>

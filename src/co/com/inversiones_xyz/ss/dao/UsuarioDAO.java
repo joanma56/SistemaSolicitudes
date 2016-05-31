@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dao;
 
+import java.util.List;
+
 import co.com.inversiones_xyz.ss.dto.Usuario;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 
@@ -22,4 +24,11 @@ public interface UsuarioDAO {
 	 * @throws DaoException
 	 */
 	public Usuario obtener(String nombreUsuario)throws DaoException;
+	
+	/**
+	 * Entrega los usuarios activos en el sistema
+	 * @return lista de instancias de los datos de todos las sucursales
+	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
+	 */
+	public List<Usuario> obtener()throws DaoException;
 }
