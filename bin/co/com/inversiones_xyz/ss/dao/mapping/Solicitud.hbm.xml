@@ -6,7 +6,7 @@
     <class name="co.com.inversiones_xyz.ss.dto.Solicitud" table="SOLICITUD">
         <id name="radicado" type="java.lang.Integer">
             <column name="Radicado" precision="11"/>
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="nombres" type="java.lang.String">
             <column name="Nombres" length="40" not-null="true"/>

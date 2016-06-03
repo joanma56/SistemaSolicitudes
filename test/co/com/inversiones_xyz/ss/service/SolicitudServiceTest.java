@@ -5,25 +5,32 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import co.com.inversiones_xyz.ss.dto.Solicitud;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 import co.com.inversiones_xyz.ss.excepcion.ServiceException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+//@TransactionConfiguration(defaultRollback=false)
 @Transactional
 @ContextConfiguration(locations = "classpath:configuracion.xml")
 public class SolicitudServiceTest {
 	@Autowired
 	SolicitudService solicitudService;
 	
-	@Test
+	//@Test
+	@Rollback(value=false)
 	public void testGenerarSolicitud() {
 		try{
-			Solicitud solicitud = solicitudService.generarSolicitud(123457, "Rafael", "Luna Perez", "ralp2089@gmail.com", "4427896", "3126171619", "Descripcion de la solicitud", "A101", 1002, 12001, 13001, "aperez");
-			System.out.println(solicitud.getRadicado()+solicitud.getDescripcion());
+			Solicitud solicitud = solicitudService.generarSolicitud(
+					"Julano", "Mengano Correa", "julano@gmail.com", "4427896", 
+					"3126171619", "Muy mal servicio", "B01", 2, 4);
+			System.out.println(solicitud.getRadicado()+""+solicitud.getDescripcion()
+			+solicitud.getSeguimiento().getResponsable().getRol().getNombre());
 		}catch(DaoException ex){
 			ex.printStackTrace();
 			fail(ex.getMessage());
@@ -33,7 +40,7 @@ public class SolicitudServiceTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void testConsultarSolicitudesPorUsuario() throws DaoException, ServiceException{
 		List<Solicitud> solicitudes = null;
 		try{
@@ -48,7 +55,7 @@ public class SolicitudServiceTest {
 		}
 	}	
 	
-	@Test
+	//@Test
 	public void testConsularSolicitud()throws DaoException, ServiceException{
 		Solicitud solicitud = null;
 		try{
@@ -65,7 +72,7 @@ public class SolicitudServiceTest {
 	@Test
 	public void testSeguirSolicitudes() throws DaoException, ServiceException{
 		try{
-			List<Solicitud> solicitudes = solicitudService.seguirSolicitudes("aperez", "AB102");
+			List<Solicitud> solicitudes = solicitudService.seguirSolicitudes("joanma");
 			for(Solicitud solicitud : solicitudes){
 				System.out.println(solicitud.getRadicado()+solicitud.getNombres());
 			}

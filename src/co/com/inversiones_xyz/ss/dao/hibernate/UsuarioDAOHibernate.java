@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.com.inversiones_xyz.ss.dao.UsuarioDAO;
+import co.com.inversiones_xyz.ss.dto.Rol;
 import co.com.inversiones_xyz.ss.dto.Usuario;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 /**
@@ -37,12 +38,32 @@ public class UsuarioDAOHibernate extends HibernateDaoSupport implements UsuarioD
 		}
 		return usuario;
 	}
-
+	
 	/**
-	 * Permite obtener todos los usuarios del sistema
+	 * MÉTODO OBTENER POR ROL
+	 * Permite obtener un conjunto de usuarios dado un rol específico
+	 * que desempeñan en el sistema.
 	 */
 	@Override
-	public List<Usuario> obtener() throws DaoException {
+	public List<Usuario> obtenerPorRol(Rol rol) throws DaoException {
+		List<Usuario> usuarios = null;
+		Session session = null;
+		Criteria criteria = null;
+		try{
+			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+			criteria = session.createCriteria(Usuario.class,rol.getCodigo());
+			usuarios = criteria.list();
+		}catch(HibernateException ex){
+			throw new DaoException(ex);
+		}
+		return usuarios;	
+	}
+
+	/**
+	 * Permite obtener todos los usuarios activos en el sistema
+	 */
+	@Override
+	public List<Usuario> obtenerTodos() throws DaoException {
 		List<Usuario> usuarios = null;
 		Session session = null;
 		Criteria criteria = null;

@@ -39,7 +39,7 @@ public class UsuarioDAOHibernateTest {
 	public void testObtenerTodos()throws DaoException{
 		List<Usuario> usuarios = null;
 		try{
-			usuarios = usuarioDao.obtener();
+			usuarios = usuarioDao.obtenerTodos();
 			for(Usuario usuario: usuarios){
 				System.out.println(usuario.getNombreUsuario()+usuario.getNombres()+usuario.getApellidos());
 			}

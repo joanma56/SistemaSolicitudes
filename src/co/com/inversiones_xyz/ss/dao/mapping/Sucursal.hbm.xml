@@ -11,10 +11,10 @@
             <column name="Nombre" length="30" not-null="true"/>
         </property>
         <property name="direccion" type="java.lang.String">
-            <column name="Direccion" length="100"/>
+            <column name="Direccion" length="100" not-null="false"/>
         </property>
         <property name="ciudad" type="java.lang.String">
-            <column name="Ciudad" length="45"/>
+            <column name="Ciudad" length="45" not-null="false"/>
         </property>
     </class>
 </hibernate-mapping>

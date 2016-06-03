@@ -15,7 +15,7 @@ public class TipoSolicitudService {
 	
 	/**
 	 * 
-	 * @return
+	 * @return 
 	 * @throws DaoException
 	 * @throws ServiceException
 	 */

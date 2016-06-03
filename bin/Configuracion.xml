@@ -71,6 +71,11 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<bean id="usuarioService" class="co.com.inversiones_xyz.ss.service.UsuarioService">
+	    <property name="usuarioDAO" ref="usuarioDao"></property>
+	    <property name="rolDAO" ref="rolDao"></property>
+	</bean>
+	
 	<bean id="solicitudService" class="co.com.inversiones_xyz.ss.service.SolicitudService">
 	    <property name="solicitudDAO" ref="solicitudDao"></property>
 	    <property name="seguimientoDAO" ref="seguimientoDao"></property>
@@ -79,6 +84,7 @@
 	    <property name="tipoSolicitudDAO" ref="tipoSolicitudDao"></property>
 	    <property name="usuarioDAO" ref="usuarioDao"></property>
 	    <property name="rolDAO" ref="rolDao"></property>
+	    <property name="userService" ref="usuarioService"></property>
 	</bean>
 	
 	<bean id="seguimientoService" class="co.com.inversiones_xyz.ss.service.SeguimientoService">
@@ -100,6 +106,6 @@
 	    <property name="tipoDAO" ref="tipoSolicitudDao"></property>
 	</bean>
 	
-	<context:component-scan base-package="co.com.inversiones_xyz.ss"/>
+	<context:component-scan base-package="co.com.inversiones_xyz.ss.ws"/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

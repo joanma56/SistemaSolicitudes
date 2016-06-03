@@ -41,13 +41,13 @@ public class SolicitudService {
 	private SeguimientoDAO seguimientoDAO;
 	private RolDAO rolDAO;
 	private Rol rol;
+	private UsuarioService userService;
+
 
 	/**
 	 * Permite generar una solicitud una vez el cliente haya ingresado los
-	 * parametros relacionados a continuacion
+	 * parametros relacionados a continuacion:
 	 * 
-	 * @param radicado
-	 *            radicado de una solicitud
 	 * @param nombres
 	 *            nombres del cliente
 	 * @param apellidos
@@ -66,11 +66,9 @@ public class SolicitudService {
 	 *            codigo del tipo de solicitud
 	 * @param codigoProducto
 	 *            codigo del producto que adquirió el cliente
-	 * @param codigoSeguimiento
-	 *            codigo del seguimiento asociado a la solicitud
-	 * @param nombreUsuario
-	 *            nombre de usuario responsable de la solicitud
+	 *            
 	 * @return instancia a la nueva solicitud almacenada en el sistema
+	 * 
 	 * @throws DaoException
 	 *             cuando ocurre un error al instanciar un seguimiento o un
 	 *             usuario en la base de datos
@@ -78,9 +76,9 @@ public class SolicitudService {
 	 *             cuando ocurre alguno de los parametros ingresados no son
 	 *             validos
 	 */
-	public Solicitud generarSolicitud(int radicado, String nombres, String apellidos, String correo, String telefono,
-			String celular, String descripcion, String codigoSucursal, int codigoTipo, int codigoProducto,
-			int codigoSeguimiento, String nombreUsuario) throws DaoException, ServiceException {
+	public Solicitud generarSolicitud(String nombres, String apellidos, String correo, String telefono,
+			String celular, String descripcion, String codigoSucursal, 
+			int codigoTipo, int codigoProducto) throws DaoException, ServiceException {
 
 		Solicitud solicitud = null;
 		Seguimiento seguimiento = null;
@@ -104,20 +102,15 @@ public class SolicitudService {
 			throw new ServiceException("El correo electrónico del cliente debe ser válido");
 		}
 
-		if (solicitudDAO.obtener(radicado) != null) {
-			throw new ServiceException("Ya existe una solicitud con numero de radicado " + radicado + " en el sistema");
-		}
 		seguimiento = new Seguimiento();
-		seguimiento.setId(codigoSeguimiento);
 		seguimiento.setFechaCreacion(new Date());
 		seguimiento.setEstado((byte) 0);
-		Usuario usuario = usuarioDAO.obtener(nombreUsuario);
+		Usuario usuario = userService.ObtieneGerenteCuentas();
 		seguimiento.setResponsable(usuario);
 		seguimiento = seguimientoDAO.insertar(seguimiento);
 		System.out.println(seguimiento.getId());
 		if (null != seguimiento) {
 			solicitud = new Solicitud();
-			solicitud.setRadicado(radicado);
 			solicitud.setNombres(nombres);
 			solicitud.setApellidos(apellidos);
 			solicitud.setCorreo(correo);
@@ -135,7 +128,7 @@ public class SolicitudService {
 		}
 		return solicitud;
 	}
-
+	
 	/**
 	 * Permite al gerente de cuentas hacer seguimiento a todas las solicitudes
 	 * activas en el sistema. Validaremos primero que el usuario ingresado 
@@ -152,25 +145,16 @@ public class SolicitudService {
 	 * @throws ServiceException
 	 *             cuando el parametro ingresado no es valido
 	 */
-	public List<Solicitud> seguirSolicitudes(String nombreUsuario, String codigoRol) throws DaoException, ServiceException {
+	public List<Solicitud> seguirSolicitudes(String nombreUsuario) throws DaoException, ServiceException {
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		if (Validaciones.isTextoVacio(codigoRol)) {
-			throw new ServiceException("El codigo de rol no puede ser nulo, ni una cadena de caracteres vacia");
-		}
 		List<Solicitud> solicitudes = null;
-		rol = rolDAO.obtener(codigoRol);
-		if (null != rol) {
-			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())) {
-				solicitudes = solicitudDAO.obtener();
-			}else{
-				throw new ServiceException("usuario no es el gerente de cuentas coorporativas");
-			}
+		if (userService.EsGerenteCuentas(nombreUsuario)) {
+			solicitudes=solicitudDAO.obtener();
 		} else{
-			throw new ServiceException("rol es nulo");
+			throw new ServiceException("usuario no es el gerente de cuentas coorporativas");
 		}
-		
 		return solicitudes;
 	}
 
@@ -248,29 +232,6 @@ public class SolicitudService {
 	 * @throws ServiceException
 	 *             cuando ingresan un parametro no valido
 	 */
-	public Boolean autenticarUsuario(String nombreUsuario, String clave) throws DaoException, ServiceException {
-
-		Cifrar cifrar = new Cifrar();
-
-		if (Validaciones.isTextoVacio(nombreUsuario)) {
-			throw new ServiceException("El nombre de usuario no puede ser nula, ni una cadena de caracteres vacia");
-		}
-
-		if (Validaciones.isTextoVacio(clave)) {
-			throw new ServiceException("La clave del usuario no puede ser nula, ni una cadena de caracteres vacia");
-		}
-
-		Usuario usuario = usuarioDAO.obtener(nombreUsuario);
-		if (usuario == null) {
-			throw new ServiceException("Usuario o contraseña no válidos");
-		}
-
-		if (!cifrar.encrypt(clave).equals(usuario.getPassword())) {
-			throw new ServiceException("Usuario o contraseña no válidos");
-		}
-
-		return Boolean.TRUE;
-	}
 
 	public SolicitudDAO getSolicitudDAO() {
 		return solicitudDAO;
@@ -326,6 +287,23 @@ public class SolicitudService {
 
 	public void setRolDAO(RolDAO rolDAO) {
 		this.rolDAO = rolDAO;
+	}
+	
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
+
+	public UsuarioService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UsuarioService userService) {
+		this.userService = userService;
 	}
 
 }
