@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto que guarda información necesaria de los usuarios para que puedan
  * iniciar sesión en el sistema. Sólamente serán usuarios del sistema el gerente de
@@ -12,7 +14,7 @@ package co.com.inversiones_xyz.ss.dto;
  * @version 1.0.0
  * 			08/05/2016
  */
-
+@XmlRootElement
 public class Usuario {
 	
 	private String nombres;	//Nombres del usuario	

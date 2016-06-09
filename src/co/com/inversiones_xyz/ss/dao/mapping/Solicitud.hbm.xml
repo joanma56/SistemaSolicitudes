@@ -26,16 +26,16 @@
         <property name="descripcion" type="java.lang.String">
             <column name="Descripcion" not-null="true"/>
         </property>
-        <many-to-one name="sucursal" class="co.com.inversiones_xyz.ss.dto.Sucursal">
+        <many-to-one name="sucursal" class="co.com.inversiones_xyz.ss.dto.Sucursal" lazy="false">
             <column name="Sucursal" length="10" not-null="true"/>
         </many-to-one>
-        <many-to-one name="tipoSolicitud" class="co.com.inversiones_xyz.ss.dto.TipoSolicitud">
+        <many-to-one name="tipoSolicitud" class="co.com.inversiones_xyz.ss.dto.TipoSolicitud" lazy="false">
             <column name="TipoSolicitud" not-null="true"/>
         </many-to-one>
-        <many-to-one name="producto" class="co.com.inversiones_xyz.ss.dto.Producto">
+        <many-to-one name="producto" class="co.com.inversiones_xyz.ss.dto.Producto" lazy="false">
             <column name="Producto" not-null="true"/>
         </many-to-one>
-        <many-to-one name="seguimiento" class="co.com.inversiones_xyz.ss.dto.Seguimiento">
+        <many-to-one name="seguimiento" class="co.com.inversiones_xyz.ss.dto.Seguimiento" lazy="false">
             <column name="Seguimiento_Id" not-null="true" />
         </many-to-one>
     </class>

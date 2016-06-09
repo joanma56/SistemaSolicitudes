@@ -18,16 +18,16 @@ import co.com.inversiones_xyz.ss.excepcion.ServiceException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@ContextConfiguration(locations = "classpath:configuracion.xml")
+@ContextConfiguration(locations = "classpath:Configuracion.xml")
 public class SeguimientoServiceTest {
 	@Autowired
 	SeguimientoService seguimientoService;
 
 	
-	@Test
+	//@Test
 	public void testResponderSolicitud() throws DaoException, ServiceException{
 		try{
-			Seguimiento seguimiento = seguimientoService.responderSolicitud(1234, "aperez", "AB102");
+			Seguimiento seguimiento = seguimientoService.responderSolicitud(3, "joanma");
 			System.out.println(seguimiento.getId()+" "+seguimiento.getFechaCreacion());
 		}catch(DaoException ex){
 			fail(ex.getMessage());
@@ -39,7 +39,7 @@ public class SeguimientoServiceTest {
 	@Test
 	public void testReasignarSolicitud() throws DaoException, ServiceException{
 		try{
-			Usuario usuario = seguimientoService.reasignarSolicitud(1234, "aperez", "rluna", "AB102");
+			Usuario usuario = seguimientoService.reasignarSolicitud(2, "joanma", "rafagol");
 			System.out.println(usuario.getNombres()+usuario.getApellidos());
 		}catch(DaoException ex){
 			fail(ex.getMessage());
@@ -48,10 +48,10 @@ public class SeguimientoServiceTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void testConsultarResultadoEncuestas() throws DaoException, ServiceException{
 		try{
-			String resultado = seguimientoService.consultarResultadoEncuentas(123456, "aperez", "AB102");
+			String resultado = seguimientoService.consultarResultadoEncuenta(123456, "aperez");
 			System.out.println("Resultado: "+resultado);
 		}catch(DaoException ex){
 			fail(ex.getMessage());
@@ -60,11 +60,11 @@ public class SeguimientoServiceTest {
 		}
 	}
 
-	@Test
+	//@Test
 	public void testConsultarResultadosEncuestas() throws DaoException, ServiceException{
 		List<String> resultados = null;
 		try{
-			resultados = seguimientoService.consultarResultadosEncuentas("aperez", "AB102");
+			resultados = seguimientoService.consultarResultadosEncuentas("aperez");
 			for(String resultado :resultados){
 				System.out.println("Resultado: "+resultado);
 			}

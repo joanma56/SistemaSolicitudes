@@ -24,7 +24,7 @@
         <property name="satisfaccion" type="java.lang.String">
             <column name="Satisfaccion" length="10"/>
         </property>
-        <many-to-one name="responsable" class="co.com.inversiones_xyz.ss.dto.Usuario">
+        <many-to-one name="responsable" class="co.com.inversiones_xyz.ss.dto.Usuario" lazy="false">
             <column name="Responsable" length="10" not-null="true"/>
         </many-to-one>
     </class>

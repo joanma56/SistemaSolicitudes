@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.com.inversiones_xyz.ss.dao.SolicitudDAO;
@@ -62,33 +63,25 @@ public class SolicitudDAOHibernate extends HibernateDaoSupport implements Solici
 		}
 		return solicitud;
 	}
-
+	
 	/**
-	 * Permite obtener las solicitudes asociadas a un usuario dado su nombre de usuario
+	 * Permite obtener una solicitud, dado el id de su seguimiento
 	 */
 	@Override
-	public List<Solicitud> obtenerPorUsuario(String userName) throws DaoException {
-		List<Solicitud> solicitudes = new ArrayList<Solicitud>();
-		Solicitud solicitud = null;
+	public Solicitud obtenerPorSeguimiento(Seguimiento seguimiento)throws DaoException{
+		List<Solicitud> solicitudes;
 		Session session = null;
-		Usuario user = null;
-		List<Seguimiento> seguimientos = null;
-		Criteria criteria = null;
+		Criteria criteria=null;
+		System.out.println(seguimiento.getId());
 		try {
 			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-			user = (Usuario) session.get(Usuario.class, userName);
-			if (null != user) {
-				criteria = session.createCriteria(Seguimiento.class, user.getNombreUsuario());
-				seguimientos = criteria.list();
-				for (Seguimiento seguimiento : seguimientos) {
-					criteria = session.createCriteria(Solicitud.class, seguimiento.getId().toString());
-					solicitudes = criteria.list();
-				}
-			}
-		} catch (HibernateException ex) {
-			throw new DaoException(ex);
+			criteria = session.createCriteria(Solicitud.class)
+					.add(Restrictions.eq("seguimiento", seguimiento));
+			solicitudes=criteria.list();
+		} catch (Exception e) {
+			throw new DaoException(e);
 		}
-		return solicitudes;
+		return solicitudes.get(0);
 	}
 
 	

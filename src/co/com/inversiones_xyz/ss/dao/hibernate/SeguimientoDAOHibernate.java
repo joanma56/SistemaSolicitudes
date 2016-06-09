@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.com.inversiones_xyz.ss.dao.SeguimientoDAO;
@@ -67,6 +68,25 @@ public class SeguimientoDAOHibernate extends HibernateDaoSupport implements Segu
 			throw new DaoException(ex);
 		}
 		return seguimiento;
+	}
+	
+	/**
+	 * Permite obtener todos los seguimientos asociados a un usuario
+	 */
+	@Override
+	public List<Seguimiento> obtenerPorUsuario(Usuario user)throws DaoException{
+		List<Seguimiento> seguimientos = null;
+		Session session = null;
+		Criteria criteria = null;
+		try{
+			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+			criteria = session.createCriteria(Seguimiento.class)
+					.add(Restrictions.eq("responsable", user));
+			seguimientos = criteria.list();
+		}catch(HibernateException ex){
+			throw new DaoException(ex);
+		}
+		return seguimientos;
 	}
 		
 }

@@ -2,6 +2,7 @@ package co.com.inversiones_xyz.ss.dao;
 
 import java.util.List;
 
+import co.com.inversiones_xyz.ss.dto.Seguimiento;
 import co.com.inversiones_xyz.ss.dto.Solicitud;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 
@@ -42,17 +43,18 @@ public interface SolicitudDAO {
 	public Solicitud modificar(Solicitud solicitud)throws DaoException;
 
 	/**
-	 * Entrega las solicitudes dado un responsable asignado
-	 * @param userName: nombre de usuario por el cual se desean consultar las solicitudes
-	 * @return lista de solicitudes 
-	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
-	 */
-	public List<Solicitud> obtenerPorUsuario(String userName)throws DaoException;
-	
-	/**
 	 * Entrega todas las solicitudes activas en el sistema
 	 * @return lista de solicitudes
 	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
 	 */
 	public List<Solicitud> obtener()throws DaoException;
+	
+	/**
+	 * Entrega una solicitud dato el id de su seguimiento
+	 * @param seguimiento
+	 *            id del seguimiento
+	 * @return Solicitud cuyo seguimiento coincide con el ingresado como parámetro
+	 * @throws DaoException cuando ocurre un error en la comunicacion con la BD
+	 */
+	public Solicitud obtenerPorSeguimiento(Seguimiento seguimiento) throws DaoException;
 }

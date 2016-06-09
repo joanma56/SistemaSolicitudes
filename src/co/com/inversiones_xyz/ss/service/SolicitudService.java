@@ -1,5 +1,6 @@
 package co.com.inversiones_xyz.ss.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -108,7 +109,6 @@ public class SolicitudService {
 		Usuario usuario = userService.ObtieneGerenteCuentas();
 		seguimiento.setResponsable(usuario);
 		seguimiento = seguimientoDAO.insertar(seguimiento);
-		System.out.println(seguimiento.getId());
 		if (null != seguimiento) {
 			solicitud = new Solicitud();
 			solicitud.setNombres(nombres);
@@ -160,39 +160,59 @@ public class SolicitudService {
 
 	/**
 	 * Permite consultar las solicitudes que tiene asignadas el usuario que
-	 * realiza la consulta
+	 * realiza la consulta para posteriormente mostrarlas en pantalla.
 	 * 
 	 * @param nombreUsuario
 	 *            login del usuario que consulta
 	 * @return instancia de una lista de las solicitudes consultadas
 	 * @throws DaoException
 	 *             cuando ocurre un error al consultar las solicitudes en la BD
+     * @throws ServiceException
+     * 			   cuando se ingresa mal el parámetro
+	 *             cuando no existe usuario en el sistema con ese nombreUsuario
+	 * 
 	 */
-	public List<Solicitud> consultarSolicitudes(String nombreUsuario) throws DaoException, ServiceException {
+	public List<Solicitud> obtenerSolicitudes(String nombreUsuario) throws DaoException, ServiceException {
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		List<Solicitud> lista = null;
-		lista = solicitudDAO.obtenerPorUsuario(nombreUsuario);
+		Usuario usuario=usuarioDAO.obtener(nombreUsuario);
+		List<Solicitud> lista=new ArrayList<Solicitud>();
+		if(usuario!=null){
+			List<Seguimiento> seguimientos=seguimientoDAO.obtenerPorUsuario(usuario);
+			if(seguimientos!=null && !seguimientos.isEmpty()){
+				Solicitud solicitud;
+				for(Seguimiento seguimiento:seguimientos){
+					solicitud=solicitudDAO.obtenerPorSeguimiento(seguimiento);
+					if(solicitud!=null){
+						lista.add(solicitud);
+					}
+				}
+			}else{
+				throw new ServiceException("No existen solicitudes asociadas a este usuario");
+			}
+		}else{
+			throw new ServiceException("No existe usuario en el sistema con ese nombre de usuario");
+		}
 		return lista;
 	}
 
 	/**
-	 * Permite consultar una solicitud en el sisdema dado su numero de radicado
+	 * Permite consultar una solicitud en el sistema dado su numero de radicado
 	 * 
 	 * @param radicado:
 	 *            numero de radicado de la solicitud
 	 * @param nombreUsuario
 	 *            nombre de usuario del usuario que consulta
-	 * @param codigoRol
-	 *            codigo del rol gerente de cuentas
-	 * @return instancia de solicitud consultada
+	 *            
+	 * @return instancia de solicitud consultada con los detalles de la misma
+	 * 
 	 * @throws DaoException
 	 *             cuando ocurre un error al consultar la solicitud en la BD
 	 * @throws ServiceException
 	 *             cuando el parametro ingresado no es valido
 	 */
-	public Solicitud consultarSolicitud(int radicado, String nombreUsuario, String codigoRol)
+	public Solicitud consultarSolicitud(int radicado, String nombreUsuario)
 			throws DaoException, ServiceException {
 		if (0 == radicado) {
 			throw new ServiceException("El radicado de la solicitud a buscar no puede ser 0");
@@ -200,38 +220,26 @@ public class SolicitudService {
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		if (Validaciones.isTextoVacio(codigoRol)) {
-			throw new ServiceException("El codigo de rol no puede ser nulo, ni una cadena de caracteres vacia");
-		}
 		Solicitud solicitud = solicitudDAO.obtener(radicado);
-		Usuario usuarioResponsable = null, usuarioConsultor;
-		if (null != solicitud)
+		Usuario usuarioResponsable = null;
+		Usuario usuarioConsultor= null;
+		if (null != solicitud){
 			usuarioResponsable = solicitud.getSeguimiento().getResponsable();
-		usuarioConsultor = usuarioDAO.obtener(nombreUsuario);
-		rol = rolDAO.obtener(codigoRol);
-		if (null != rol) {
-			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())
-					|| usuarioResponsable == usuarioConsultor) {
-				return solicitud;
+			usuarioConsultor=usuarioDAO.obtener(nombreUsuario);
+			if(usuarioConsultor!=null){
+				if(usuarioResponsable.getNombreUsuario()==usuarioConsultor.getNombreUsuario()){
+					return solicitud;
+				}else{
+					throw new ServiceException("Usuario"+ nombreUsuario +
+							"no tiene permisos para ver detalles de esta solicitud");
+				}
+			}else{
+				throw new ServiceException("No existe usuario con ese userName");
 			}
-		} else
-			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
-		return null;
+		}else{
+			throw new ServiceException("No existe solicitud con ese número de radicado");
+		}
 	}
-
-	/**
-	 * Validar que el usuario este autenticado
-	 * 
-	 * @param nombreUsuario
-	 *            nombre del usuario que desea autentica
-	 * @param clave
-	 *            password del usuario que desea autenticar
-	 * @return verdadero si está autenticado o falso de lo contrario
-	 * @throws DaoException
-	 *             cuando ocurre un error instanciando el usuario en la BD
-	 * @throws ServiceException
-	 *             cuando ingresan un parametro no valido
-	 */
 
 	public SolicitudDAO getSolicitudDAO() {
 		return solicitudDAO;
@@ -289,7 +297,6 @@ public class SolicitudService {
 		this.rolDAO = rolDAO;
 	}
 	
-
 	public Rol getRol() {
 		return rol;
 	}

@@ -74,20 +74,6 @@ public class SolicitudDAOHibernateTest {
 	}
 
 	@Test
-	public void testObtenerPorUsuario() {
-		List<Solicitud> solicitudes = null;
-		try {
-			solicitudes = solicitudDao.obtenerPorUsuario("aperez");
-			for (Solicitud solicitud : solicitudes) {
-				System.out.println(solicitud.getRadicado() + solicitud.getNombres() + solicitud.getApellidos()
-							+ solicitud.getCorreo() + solicitud.getTelefono() + solicitud.getDescripcion());
-			}
-		} catch (DaoException ex) {
-			fail(ex.getMessage());
-		}
-	}
-
-	@Test
 	public void testObtenerTodasSolicitudes() {
 		List<Solicitud> solicitudes = null;
 		try {

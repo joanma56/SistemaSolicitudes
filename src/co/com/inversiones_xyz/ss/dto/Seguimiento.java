@@ -2,6 +2,9 @@ package co.com.inversiones_xyz.ss.dto;
 
 import java.util.Date;
 
+import javax.persistence.JoinColumn;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto que guarda la información correspondiente al historial y seguimiento de una
  * solicitud; así como del responsable encargado de atenderla. Un seguimiento se corresponde
@@ -15,6 +18,7 @@ import java.util.Date;
  * 			08/05/2016				   
  */
 
+@XmlRootElement
 public class Seguimiento {
 	
 	private Integer id; //Identificación única del seguimiento
@@ -69,5 +73,4 @@ public class Seguimiento {
 	public void setResponsable(Usuario responsable) {
 		this.responsable = responsable;
 	}
-	
 }

@@ -14,7 +14,9 @@ public class ProductoService {
 	private ProductoDAO productoDAO;
 	
 	/**
-	 * 
+	 * Consultar Productos
+	 * Permite obtener todos los productos de la base de datos con el fin 
+	 * de desplegarlos en pantalla al momento de crear una nueva solicitud
 	 * @return
 	 * @throws DaoException
 	 * @throws ServiceException

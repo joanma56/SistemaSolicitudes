@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="co.com.inversiones_xyz.ss.dto.Usuario" table="usuario">
     
-        <id name="NombreUsuario" type="java.lang.String">
+        <id name="nombreUsuario" type="java.lang.String">
             <column name="NombreUsuario" length="20" />
         </id>
         <property name="nombres" type="java.lang.String">
@@ -20,7 +20,7 @@
         <property name="correo" type="java.lang.String">
             <column name="Correo" length="100" not-null="true"/>
         </property>
-        <many-to-one name="rol" class="co.com.inversiones_xyz.ss.dto.Rol">
+        <many-to-one name="rol" class="co.com.inversiones_xyz.ss.dto.Rol" lazy="false">
             <column name="Rol" length="10" not-null="true" />
         </many-to-one>
     </class>

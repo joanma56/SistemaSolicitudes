@@ -1,6 +1,9 @@
 package co.com.inversiones_xyz.ss.dao;
 
+import java.util.List;
+
 import co.com.inversiones_xyz.ss.dto.Seguimiento;
+import co.com.inversiones_xyz.ss.dto.Usuario;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 
 /**
@@ -44,5 +47,17 @@ public interface SeguimientoDAO {
 	 *             cuando ocurre un error en la comunicacion con la BD
 	 */
 	public Seguimiento obtener(int id) throws DaoException;
+	
+	
+	/**
+	 * Permite obtener todos los seguimientos asociados a un usuario
+	 * 
+	 * @param usuario
+	 *            nombreUsuario del usuario
+	 * @return lista con los seguimientos correspondientes
+	 * @throws DaoException
+	 *             cuando ocurre un error en la comunicacion con la BD
+	 */
+	public List<Seguimiento> obtenerPorUsuario(Usuario user)throws DaoException;
 
 }

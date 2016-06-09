@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import co.com.inversiones_xyz.ss.dao.UsuarioDAO;
@@ -51,7 +52,8 @@ public class UsuarioDAOHibernate extends HibernateDaoSupport implements UsuarioD
 		Criteria criteria = null;
 		try{
 			session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-			criteria = session.createCriteria(Usuario.class,rol.getCodigo());
+			criteria = session.createCriteria(Usuario.class)
+					.add(Restrictions.eq("rol", rol));
 			usuarios = criteria.list();
 		}catch(HibernateException ex){
 			throw new DaoException(ex);

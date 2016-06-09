@@ -27,8 +27,8 @@ public class SolicitudServiceTest {
 	public void testGenerarSolicitud() {
 		try{
 			Solicitud solicitud = solicitudService.generarSolicitud(
-					"Julano", "Mengano Correa", "julano@gmail.com", "4427896", 
-					"3126171619", "Muy mal servicio", "B01", 2, 4);
+					"Andrés", "Tabares Rodríguez", "andres@gmail.com", "5968234", 
+					"3136547890", "Producto defectuoso", "L01", 3, 3);
 			System.out.println(solicitud.getRadicado()+""+solicitud.getDescripcion()
 			+solicitud.getSeguimiento().getResponsable().getRol().getNombre());
 		}catch(DaoException ex){
@@ -40,13 +40,13 @@ public class SolicitudServiceTest {
 		}
 	}
 
-	//@Test
+	@Test
 	public void testConsultarSolicitudesPorUsuario() throws DaoException, ServiceException{
 		List<Solicitud> solicitudes = null;
 		try{
-			solicitudes = solicitudService.consultarSolicitudes("aperez");
+			solicitudes = solicitudService.obtenerSolicitudes("joanma");
 			for(Solicitud solicitud: solicitudes){
-				System.out.println(solicitud.getNombres()+solicitud.getApellidos());
+				System.out.println("MIS SOLICITUDES SON:"+solicitud.getDescripcion());
 			}
 		}catch(DaoException ex){
 			fail(ex.getMessage());
@@ -55,11 +55,11 @@ public class SolicitudServiceTest {
 		}
 	}	
 	
-	//@Test
+	@Test
 	public void testConsularSolicitud()throws DaoException, ServiceException{
 		Solicitud solicitud = null;
 		try{
-			solicitud = solicitudService.consultarSolicitud(123456, "aperez", "AB102");
+			solicitud = solicitudService.consultarSolicitud(3, "joanma");
 			if(null!=solicitud)
 				System.out.println(solicitud.getNombres()+solicitud.getApellidos());
 		}catch(DaoException ex){

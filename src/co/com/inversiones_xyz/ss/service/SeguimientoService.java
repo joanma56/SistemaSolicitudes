@@ -30,9 +30,11 @@ public class SeguimientoService {
 	private SeguimientoDAO seguimientoDAO;
 	private RolDAO rolDAO;
 	private Rol rol;
+	private UsuarioService userService;
 	
+
 	/**
-	 * Permite responder una solicitud dado el id de su correspondiente
+	 * Permite responder una solicitud dado su radicado
 	 * seguimiento Responder solicitud consiste en actualizar el estado y fecha
 	 * de respondida del correspiente seguimiento
 	 * 
@@ -48,40 +50,38 @@ public class SeguimientoService {
 	 * @throws ServiceException
 	 *             cuando se ingresa un parametro invalido
 	 */
-	public Seguimiento responderSolicitud(int id, String nombreUsuario, String codigoRol)
+	public Seguimiento responderSolicitud(int radicado, String nombreUsuario)
 			throws DaoException, ServiceException {
-		if (0 == id) {
+		if (0 == radicado) {
 			throw new ServiceException("El id del seguimiento a buscar no puede ser 0");
 		}
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		if (Validaciones.isTextoVacio(codigoRol)) {
-			throw new ServiceException("El codigo del rol no puede ser nulo, ni una cadena de caracteres vacia");
-		}
-		Seguimiento seguimiento = seguimientoDAO.obtener(id);
-		if (null != seguimiento && 0 == seguimiento.getEstado()) {
-			rol = rolDAO.obtener(codigoRol);
-			if (null != rol) {
-				if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())
-						|| seguimiento.getResponsable() == usuarioDAO.obtener(nombreUsuario)) {
+		Seguimiento seguimiento = solicitudDAO.obtener(radicado).getSeguimiento();
+		Usuario usuarioSolicitante=usuarioDAO.obtener(nombreUsuario);
+		if(usuarioSolicitante!=null){
+			if (null != seguimiento && 0 == seguimiento.getEstado()) {
+				if (seguimiento.getResponsable().getNombreUsuario() 
+						== usuarioSolicitante.getNombreUsuario()) {
 					seguimiento.setFechaRespondida(new Date());
 					seguimiento.setEstado((byte) 1);
 					seguimientoDAO.modificarSeguimiento(seguimiento);
 				} else {
 					throw new ServiceException("Usuario no autorizado para responder solicitud");
 				}
-			} else
-				throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
-		} else {
-			throw new ServiceException("Verifique que la solicitud esté aun pendiente por responder");
+			} else {
+				throw new ServiceException("Verifique que la solicitud exista y esté aun pendiente por responder");
+			}
+		}else{
+			throw new ServiceException("No existe usuario con ese userName");
 		}
 		return seguimiento;
 	}
 
 	/**
-	 * Permite reasignar el responsable de una solicitud dado el id de su
-	 * correspondiente seguimiento reasignar responsable consiste en modificar
+	 * Permite reasignar el responsable de una solicitud dado su radicado.
+	 *  reasignar responsable consiste en modificar
 	 * el usuario (Gerente de cuentas) por un usuario diferente y actualizar la
 	 * fecha
 	 * 
@@ -98,10 +98,10 @@ public class SeguimientoService {
 	 * @throws ServiceException
 	 *             cuando se ingresan parametros no válidos
 	 */
-	public Usuario reasignarSolicitud(int id, String nombreUsuario, String nuevoResponsable, String codigoRol)
+	public Usuario reasignarSolicitud(int radicado, String nombreUsuario, String nuevoResponsable)
 			throws DaoException, ServiceException {
-		if (0 == id) {
-			throw new ServiceException("El id del seguimiento a buscar no puede ser 0");
+		if (0 == radicado) {
+			throw new ServiceException("El radiccado de la solicitud a buscar no puede ser 0");
 		}
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
@@ -110,27 +110,26 @@ public class SeguimientoService {
 			throw new ServiceException("El nombre de usuario del nuevo responsable no puede ser nulo,"
 					+ "ni una cadena de caracteres vacia");
 		}
-		if (Validaciones.isTextoVacio(codigoRol)) {
-			throw new ServiceException("El codigo de rol no puede ser nulo, ni una cadena de caracteres vacia");
-		}
-		Usuario usuarioResponsable = null;
-		rol = rolDAO.obtener(codigoRol);
-		if (null != rol) {
-			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())) {
-				Seguimiento seguimiento = seguimientoDAO.obtener(id);
-				if (null != seguimiento && 0 == seguimiento.getEstado()) {
-					seguimiento.setFechaReasignada(new Date());
-					usuarioResponsable = usuarioDAO.obtener(nuevoResponsable);
+		Usuario usuarioResponsable;
+		
+		if (userService.EsGerenteCuentas(nombreUsuario)) {
+			
+			Seguimiento seguimiento = solicitudDAO.obtener(radicado).getSeguimiento();
+			if (null != seguimiento && 0 == seguimiento.getEstado()) {
+				seguimiento.setFechaReasignada(new Date());
+				usuarioResponsable = usuarioDAO.obtener(nuevoResponsable);
+				if(usuarioResponsable!=null){
 					seguimiento.setResponsable(usuarioResponsable);
-					seguimientoDAO.modificarSeguimiento(seguimiento);
-				} else {
-					throw new ServiceException("Verifique que la solicitud esté pendiente por responder");
+					seguimientoDAO.modificarSeguimiento(seguimiento);		
+				}else{
+					throw new ServiceException("No existe usuario con nombre de usuario "+nuevoResponsable);
 				}
 			} else {
-				throw new ServiceException("Usted no tiene permisos para realizar esta operacion");
+				throw new ServiceException("Verifique que la solicitud existe y está pendiente por responder");
 			}
 		} else
-			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
+			throw new ServiceException("Usted no tiene permisos para realizar esta operacion");
+		
 		return usuarioResponsable;
 	}
 
@@ -142,15 +141,14 @@ public class SeguimientoService {
 	 *            encuesta que se desea consultar
 	 * @param nombreUsuario
 	 *            nombre de usuario que realiza la consulta
-	 * @param codigoRol
-	 *            codigo del rol gerente de cuentas
+	 *            
 	 * @return la respuesta hecha por el cliente a la encuenta
 	 * @throws DaoException
 	 *             cuando ocurre un error al instanciar un usuario en la BD
 	 * @throws ServiceException
 	 *             cuando ingresan algun parametro no valido
 	 */
-	public String consultarResultadoEncuentas(Integer radicado, String nombreUsuario, String codigoRol)
+	public String consultarResultadoEncuenta(Integer radicado, String nombreUsuario)
 			throws DaoException, ServiceException {
 		if (null == radicado) {
 			throw new ServiceException("El radicado no puede ser nulo o una cadena vacia");
@@ -158,13 +156,10 @@ public class SeguimientoService {
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		if (Validaciones.isTextoVacio(codigoRol)) {
-			throw new ServiceException("El codigo de rol no puede ser nulo, ni una cadena de caracteres vacia");
-		}
 		Seguimiento seguimiento = null;
-		rol = rolDAO.obtener(codigoRol);
-		if (null != rol) {
-			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())) {
+		Usuario usuario=usuarioDAO.obtener(nombreUsuario);
+		if (usuario != null) {
+			if (userService.EsGerenteCuentas(nombreUsuario)) {
 				Solicitud solicitud = solicitudDAO.obtener(radicado);
 				if (null != solicitud) {
 					seguimiento = solicitud.getSeguimiento();
@@ -178,7 +173,7 @@ public class SeguimientoService {
 				throw new ServiceException("Usuario no autorizado para revisar encuesta");
 			}
 		} else{
-			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
+			throw new ServiceException("Usuario no existe en el sistema");
 			}
 		return null;
 	}
@@ -189,27 +184,25 @@ public class SeguimientoService {
 	 * 
 	 * @param nombreUsuario
 	 *            nombre de usuario que realiza la consulta
-	 * @param codigoRol
-	 *            codigo del rol gerente de cuentas
-	 * @return la respuesta hecha por el cliente a la encuenta
+	 *            
+	 * @return las respuestas hechas por los clientes a sus
+	 * 		   correspiendientes encuentas.
+	 * 
 	 * @throws DaoException
 	 *             cuando ocurre un error al instanciar un usuario en la BD
 	 * @throws ServiceException
 	 *             cuando ingresan algun parametro no valido
 	 */
-	public List<String> consultarResultadosEncuentas(String nombreUsuario, String codigoRol)
+	public List<String> consultarResultadosEncuentas(String nombreUsuario)
 			throws DaoException, ServiceException {
 		
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
 		}
-		if (Validaciones.isTextoVacio(codigoRol)) {
-			throw new ServiceException("El codigo de rol no puede ser nulo, ni una cadena de caracteres vacia");
-		}
 		Seguimiento seguimiento = null;
-		rol = rolDAO.obtener(codigoRol);
-		if (null != rol) {
-			if ((rol.getNombre()).equals(usuarioDAO.obtener(nombreUsuario).getRol().getNombre())) {
+		Usuario usuario=usuarioDAO.obtener(nombreUsuario);
+		if (usuario != null) {
+			if (userService.EsGerenteCuentas(nombreUsuario)) {
 				List<Solicitud> solicitudes = solicitudDAO.obtener();
 				List<String> resultados=new ArrayList<String>();
 				for(Solicitud solicitud:solicitudes){
@@ -223,7 +216,7 @@ public class SeguimientoService {
 				throw new ServiceException("Usuario no autorizado para revisar encuestas");
 			}
 		} else{
-			throw new ServiceException("No se encontró rol correspondiente al codigoRol ingresado");
+			throw new ServiceException("No existe usuario con nombre de usuario "+ nombreUsuario);
 			}
 		//return null;
 	}
@@ -266,6 +259,14 @@ public class SeguimientoService {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+	
+	public UsuarioService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UsuarioService userService) {
+		this.userService = userService;
 	}
 
 }

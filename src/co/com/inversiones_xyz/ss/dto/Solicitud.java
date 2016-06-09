@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto que guarda la información de una solicitud así como del cliente que la generó
  * desde el sistema.
@@ -13,6 +15,7 @@ package co.com.inversiones_xyz.ss.dto;
  * 					   
  */
 
+@XmlRootElement
 public class Solicitud {
 	
 	private Integer radicado; //Identificador único de la solicitud			

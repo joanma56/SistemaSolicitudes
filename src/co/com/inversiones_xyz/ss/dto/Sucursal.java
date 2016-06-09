@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto que guarda la información correspondiente a una sucursal de la 
  * empresa en donde un cliente haya adquirido un producto y que haya asociado con una
@@ -13,7 +15,7 @@ package co.com.inversiones_xyz.ss.dto;
  * 			08/05/2016
  *
  */
-
+@XmlRootElement
 public class Sucursal {
 	private String codigo;	//Identificador de la sucursal	
 	private String nombre;	//Nombre de la sucursal	

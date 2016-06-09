@@ -92,6 +92,7 @@
 	    <property name="seguimientoDAO" ref="seguimientoDao"></property>
 	    <property name="usuarioDAO" ref="usuarioDao"></property>
 	    <property name="rolDAO" ref="rolDao"></property>
+	    <property name="userService" ref="usuarioService"></property>
 	</bean>
 	
 	<bean id="productoService" class="co.com.inversiones_xyz.ss.service.ProductoService">

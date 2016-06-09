@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto que nos permite acceder a la información de los productos
  * presentes en una sucursal y que han sido asociados a una solicitud.
@@ -11,6 +13,7 @@ package co.com.inversiones_xyz.ss.dto;
  * @version 1.0.0
  * 			08/05/2016
  */
+@XmlRootElement
 public class Producto {
 	
 	private Integer codigo;	//Identificador del producto

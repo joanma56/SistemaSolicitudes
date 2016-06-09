@@ -1,5 +1,7 @@
 package co.com.inversiones_xyz.ss.dto;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto que indica el rol en el sistema que puede desempeñar determinado
  * usuario. Los dos roles principales en el sistema son:
@@ -14,7 +16,7 @@ package co.com.inversiones_xyz.ss.dto;
  * 			08/05/2016
  *
  */
-
+@XmlRootElement
 public class Rol {
 	
 	private String codigo; //Identificador del rol
