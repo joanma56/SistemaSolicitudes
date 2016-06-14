@@ -30,6 +30,7 @@ public class Seguimiento {
 								se le envió al correo. Las respuestas consisten en una secuencia de Si,No*/
 	private Usuario responsable;/*Clave foranea a la tabla usuario
 								Usuario del sistema encargado de atender la solicitud*/
+	private String respuesta; //Respuesta digitada por el encargado para esta solicitud
 	
 	public Integer getId() {
 		return id;
@@ -72,5 +73,11 @@ public class Seguimiento {
 	}
 	public void setResponsable(Usuario responsable) {
 		this.responsable = responsable;
+	}
+	public String getRespuesta() {
+		return respuesta;
+	}
+	public void setRespuesta(String respuesta) {
+		this.respuesta = respuesta;
 	}
 }

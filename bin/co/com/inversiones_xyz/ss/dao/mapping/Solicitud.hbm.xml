@@ -24,7 +24,7 @@
             <column name="Celular" length="10"/>
         </property>
         <property name="descripcion" type="java.lang.String">
-            <column name="Descripcion" not-null="true"/>
+            <column name="Descripcion" length="150" not-null="true"/>
         </property>
         <many-to-one name="sucursal" class="co.com.inversiones_xyz.ss.dto.Sucursal" lazy="false">
             <column name="Sucursal" length="10" not-null="true"/>

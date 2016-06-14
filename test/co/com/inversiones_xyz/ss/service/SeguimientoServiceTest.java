@@ -24,11 +24,11 @@ public class SeguimientoServiceTest {
 	SeguimientoService seguimientoService;
 
 	
-	//@Test
+	@Test
 	public void testResponderSolicitud() throws DaoException, ServiceException{
 		try{
-			Seguimiento seguimiento = seguimientoService.responderSolicitud(3, "joanma");
-			System.out.println(seguimiento.getId()+" "+seguimiento.getFechaCreacion());
+			Seguimiento seguimiento = seguimientoService.responderSolicitud(3, "joanma","demalas");
+			System.out.println(seguimiento.getId()+" "+seguimiento.getFechaCreacion()+seguimiento.getRespuesta());
 		}catch(DaoException ex){
 			fail(ex.getMessage());
 		}catch(ServiceException ex){
@@ -36,7 +36,7 @@ public class SeguimientoServiceTest {
 		}		
 	}
 
-	@Test
+	//@Test
 	public void testReasignarSolicitud() throws DaoException, ServiceException{
 		try{
 			Usuario usuario = seguimientoService.reasignarSolicitud(2, "joanma", "rafagol");

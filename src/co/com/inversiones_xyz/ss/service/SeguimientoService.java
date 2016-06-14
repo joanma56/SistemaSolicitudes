@@ -50,13 +50,16 @@ public class SeguimientoService {
 	 * @throws ServiceException
 	 *             cuando se ingresa un parametro invalido
 	 */
-	public Seguimiento responderSolicitud(int radicado, String nombreUsuario)
+	public Seguimiento responderSolicitud(int radicado, String nombreUsuario,String respuesta)
 			throws DaoException, ServiceException {
 		if (0 == radicado) {
 			throw new ServiceException("El id del seguimiento a buscar no puede ser 0");
 		}
 		if (Validaciones.isTextoVacio(nombreUsuario)) {
 			throw new ServiceException("El nombre de usuario no puede ser nulo, ni una cadena de caracteres vacia");
+		}
+		if(Validaciones.isTextoVacio(respuesta)){
+			throw new ServiceException("La respuesta a la solicitud no puede ser vacía");
 		}
 		Seguimiento seguimiento = solicitudDAO.obtener(radicado).getSeguimiento();
 		Usuario usuarioSolicitante=usuarioDAO.obtener(nombreUsuario);
@@ -66,6 +69,7 @@ public class SeguimientoService {
 						== usuarioSolicitante.getNombreUsuario()) {
 					seguimiento.setFechaRespondida(new Date());
 					seguimiento.setEstado((byte) 1);
+					seguimiento.setRespuesta(respuesta);
 					seguimientoDAO.modificarSeguimiento(seguimiento);
 				} else {
 					throw new ServiceException("Usuario no autorizado para responder solicitud");
