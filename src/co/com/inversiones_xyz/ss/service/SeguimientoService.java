@@ -1,8 +1,12 @@
 package co.com.inversiones_xyz.ss.service;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.mail.MessagingException;
+
 import org.springframework.transaction.annotation.Transactional;
 import co.com.inversiones_xyz.ss.dao.RolDAO;
 import co.com.inversiones_xyz.ss.dao.SeguimientoDAO;
@@ -15,6 +19,7 @@ import co.com.inversiones_xyz.ss.dto.Usuario;
 import co.com.inversiones_xyz.ss.excepcion.DaoException;
 import co.com.inversiones_xyz.ss.excepcion.ServiceException;
 import co.com.inversiones_xyz.ss.validacion.Validaciones;
+import co.com.inversiones_xyz.ss.mail.mail;
 
 /**
  * Clase que permite contiene la logica de negocio para el seguimiento de solicitudes
@@ -49,6 +54,8 @@ public class SeguimientoService {
 	 *             BD
 	 * @throws ServiceException
 	 *             cuando se ingresa un parametro invalido
+	 * @throws MessagingException 
+	 * @throws UnsupportedEncodingException 
 	 */
 	public Seguimiento responderSolicitud(int radicado, String nombreUsuario,String respuesta)
 			throws DaoException, ServiceException {
@@ -61,7 +68,8 @@ public class SeguimientoService {
 		if(Validaciones.isTextoVacio(respuesta)){
 			throw new ServiceException("La respuesta a la solicitud no puede ser vacía");
 		}
-		Seguimiento seguimiento = solicitudDAO.obtener(radicado).getSeguimiento();
+		Solicitud solicitud=solicitudDAO.obtener(radicado);
+		Seguimiento seguimiento = solicitud.getSeguimiento();
 		Usuario usuarioSolicitante=usuarioDAO.obtener(nombreUsuario);
 		if(usuarioSolicitante!=null){
 			if (null != seguimiento && 0 == seguimiento.getEstado()) {
@@ -70,6 +78,15 @@ public class SeguimientoService {
 					seguimiento.setFechaRespondida(new Date());
 					seguimiento.setEstado((byte) 1);
 					seguimiento.setRespuesta(respuesta);
+					try {
+						mail.enviarCorreo(solicitud.getCorreo(), respuesta, solicitud.getRadicado());
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						throw new ServiceException("Error enviando el correo "+e.getMessage());
+					} catch (MessagingException e) {
+						// TODO Auto-generated catch block
+						throw new ServiceException("Error enviando el correo con la respuesta "+e.getMessage());
+					}
 					seguimientoDAO.modificarSeguimiento(seguimiento);
 				} else {
 					throw new ServiceException("Usuario no autorizado para responder solicitud");

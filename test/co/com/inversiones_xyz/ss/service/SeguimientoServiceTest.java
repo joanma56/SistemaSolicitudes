@@ -2,7 +2,10 @@ package co.com.inversiones_xyz.ss.service;
 
 import static org.junit.Assert.fail;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +28,10 @@ public class SeguimientoServiceTest {
 
 	
 	@Test
-	public void testResponderSolicitud() throws DaoException, ServiceException{
+	public void testResponderSolicitud() 
+			throws DaoException, ServiceException{
 		try{
-			Seguimiento seguimiento = seguimientoService.responderSolicitud(3, "joanma","demalas");
+			Seguimiento seguimiento = seguimientoService.responderSolicitud(4, "rafagol","no importa");
 			System.out.println(seguimiento.getId()+" "+seguimiento.getFechaCreacion()+seguimiento.getRespuesta());
 		}catch(DaoException ex){
 			fail(ex.getMessage());
